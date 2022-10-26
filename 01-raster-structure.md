@@ -491,10 +491,7 @@ If your raster already has `NA` values set correctly but you aren't sure where t
 
 To highlight `NA` values in ggplot, alter the `scale_fill_*()` layer to contain a colour instruction for `NA` values, like `scale_fill_viridis_c(na.value = 'deeppink')`
 
-
-```{.error}
-Error in FUN(X[[i]], ...): object 'HARV_RGB_Ortho.3' not found
-```
+<img src="fig/01-raster-structure-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 The value that is conventionally used to take note of missing data (the
 `NoDataValue` value) varies by the raster data type. For floating-point rasters,

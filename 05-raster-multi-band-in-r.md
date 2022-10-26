@@ -67,13 +67,11 @@ RGB_band1_HARV_df  <- as.data.frame(RGB_band1_HARV, xy = TRUE)
 ```r
 ggplot() +
   geom_raster(data = RGB_band1_HARV_df,
-              aes(x = x, y = y, alpha = HARV_RGB_Ortho)) + 
+              aes(x = x, y = y, alpha = layer)) + 
   coord_quickmap()
 ```
 
-```{.error}
-Error in FUN(X[[i]], ...): object 'HARV_RGB_Ortho' not found
-```
+<img src="fig/05-raster-multi-band-in-r-rendered-harv-rgb-band1-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -159,13 +157,11 @@ RGB_band2_HARV_df <- as.data.frame(RGB_band2_HARV, xy = TRUE)
 ```r
 ggplot() +
   geom_raster(data = RGB_band2_HARV_df,
-              aes(x = x, y = y, alpha = HARV_RGB_Ortho)) + 
+              aes(x = x, y = y, alpha = layer)) + 
   coord_equal()
 ```
 
-```{.error}
-Error in FUN(X[[i]], ...): object 'HARV_RGB_Ortho' not found
-```
+<img src="fig/05-raster-multi-band-in-r-rendered-rgb-harv-band2-1.png" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -312,12 +308,14 @@ Let's create a histogram of the first band:
 
 ```r
 ggplot() +
-  geom_histogram(data = RGB_stack_HARV_df, aes(HARV_RGB_Ortho.1))
+  geom_histogram(data = RGB_stack_HARV_df, aes(HARV_RGB_Ortho_1))
 ```
 
-```{.error}
-Error in FUN(X[[i]], ...): object 'HARV_RGB_Ortho.1' not found
+```{.output}
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
+
+<img src="fig/05-raster-multi-band-in-r-rendered-rgb-harv-hist-band1-1.png" style="display: block; margin: auto;" />
 
 And a raster plot of the second band:
 
@@ -325,13 +323,11 @@ And a raster plot of the second band:
 ```r
 ggplot() +
   geom_raster(data = RGB_stack_HARV_df,
-              aes(x = x, y = y, alpha = HARV_RGB_Ortho.2)) + 
+              aes(x = x, y = y, alpha = HARV_RGB_Ortho_2)) + 
   coord_quickmap()
 ```
 
-```{.error}
-Error in FUN(X[[i]], ...): object 'HARV_RGB_Ortho.2' not found
-```
+<img src="fig/05-raster-multi-band-in-r-rendered-rgb-harv-plot-band2-1.png" style="display: block; margin: auto;" />
 
 We can access any individual band in the same way.
 
