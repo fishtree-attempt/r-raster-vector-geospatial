@@ -6,7 +6,7 @@ source: Rmd
 ---
 
 ```{r setup, echo=FALSE}
-source("../setup.R")
+source("setup.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -43,7 +43,7 @@ DSM_HARV_df <- as.data.frame(DSM_HARV, xy = TRUE)
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 

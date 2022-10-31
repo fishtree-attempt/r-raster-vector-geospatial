@@ -6,7 +6,7 @@ source: Rmd
 ---
 
 ```{r setup, echo=FALSE}
-source("../setup.R")
+source("setup.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -32,7 +32,7 @@ library(dplyr)
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
@@ -46,7 +46,7 @@ function in the `raster` package.
 
 ## Raster Projection in R
 
-In the [Plot Raster Data in R]({{ site.baseurl }}/02-raster-plot/)
+In the [Plot Raster Data in R](02-raster-plot.Rmd)
 episode, we learned how to layer a raster file on top of a hillshade for a nice
 looking basemap. In that episode, all of our data were in the same CRS. What
 happens when things don't line up?
@@ -57,7 +57,7 @@ far in that the digital surface model (DSM) includes the tops of trees, while
 the digital terrain model (DTM) shows the ground level.
 
 We'll be looking at another model (the canopy height model) in
-[a later episode]({{ site.baseurl }}/04-raster-calculations-in-r/) and will see how to calculate the CHM from the
+[a later episode](04-raster-calculations-in-r.Rmd) and will see how to calculate the CHM from the
 DSM and DTM. Here, we will create a map of the Harvard Forest Digital
 Terrain Model
 (`DTM_HARV`) draped or layered on top of the hillshade (`DTM_hill_HARV`).
@@ -296,41 +296,45 @@ field site using the `SJER_DSMhill_WGS84.tif` and `SJER_dsmCrop.tif` files.
 
 Reproject the data as necessary to make things line up!
 
-> ## Answers
-> 
-> ```{r challenge-code-reprojection, echo=TRUE}
-> # import DSM
-> DSM_SJER <- raster("data/NEON-DS-Airborne-Remote-Sensing/SJER/DSM/SJER_dsmCrop.tif")
-> # import DSM hillshade
-> DSM_hill_SJER_WGS <-
-> raster("data/NEON-DS-Airborne-Remote-Sensing/SJER/DSM/SJER_DSMhill_WGS84.tif")
-> 
-> # reproject raster
-> DTM_hill_UTMZ18N_SJER <- projectRaster(DSM_hill_SJER_WGS,
->                                   crs = crs(DSM_SJER),
->                                   res = 1)
-> 
-> # convert to data.frames
-> DSM_SJER_df <- as.data.frame(DSM_SJER, xy = TRUE)
-> 
-> DSM_hill_SJER_df <- as.data.frame(DTM_hill_UTMZ18N_SJER, xy = TRUE)
-> 
-> ggplot() +
->      geom_raster(data = DSM_hill_SJER_df, 
->                  aes(x = x, y = y, 
->                    alpha = SJER_DSMhill_WGS84)
->                  ) +
->      geom_raster(data = DSM_SJER_df, 
->              aes(x = x, y = y, 
->                   fill = SJER_dsmCrop,
->                   alpha=0.8)
->              ) + 
->      scale_fill_gradientn(name = "Elevation", colors = terrain.colors(10)) + 
->      coord_quickmap()
-> ```
+:::::::::::::::  solution
+
+## Answers
+
+```{r challenge-code-reprojection, echo=TRUE}
+# import DSM
+DSM_SJER <- raster("data/NEON-DS-Airborne-Remote-Sensing/SJER/DSM/SJER_dsmCrop.tif")
+# import DSM hillshade
+DSM_hill_SJER_WGS <-
+raster("data/NEON-DS-Airborne-Remote-Sensing/SJER/DSM/SJER_DSMhill_WGS84.tif")
+
+# reproject raster
+DTM_hill_UTMZ18N_SJER <- projectRaster(DSM_hill_SJER_WGS,
+                                  crs = crs(DSM_SJER),
+                                  res = 1)
+
+# convert to data.frames
+DSM_SJER_df <- as.data.frame(DSM_SJER, xy = TRUE)
+
+DSM_hill_SJER_df <- as.data.frame(DTM_hill_UTMZ18N_SJER, xy = TRUE)
+
+ggplot() +
+     geom_raster(data = DSM_hill_SJER_df, 
+                 aes(x = x, y = y, 
+                   alpha = SJER_DSMhill_WGS84)
+                 ) +
+     geom_raster(data = DSM_SJER_df, 
+             aes(x = x, y = y, 
+                  fill = SJER_dsmCrop,
+                  alpha=0.8)
+             ) + 
+     scale_fill_gradientn(name = "Elevation", colors = terrain.colors(10)) + 
+     coord_quickmap()
+```
+
+:::::::::::::::::::::::::
 
 If you completed the San Joaquin plotting challenge in the
-[Plot Raster Data in R]({{ site.baseurl }}/02-raster-plot/)
+[Plot Raster Data in R](02-raster-plot.Rmd)
 episode, how does the map you just created compare to that map?
 
 :::::::::::::::  solution
