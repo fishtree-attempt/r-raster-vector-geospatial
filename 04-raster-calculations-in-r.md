@@ -29,7 +29,7 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
@@ -458,7 +458,7 @@ keep track of data from different sites!
 
 0. You should have the DSM and DTM data for the SJER site already
   loaded from the
-  [Plot Raster Data in R]({{ site.baseurl }}/02-raster-plot/)
+  [Plot Raster Data in R](02-raster-plot.Rmd)
   episode.) Don't forget to check the CRSs and units of the data.
 1. Create a CHM from the two raster layers and check to make sure the data
   are what you expect.

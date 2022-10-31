@@ -91,3 +91,5 @@ profiles:
 
 url: https://preview.carpentries.org/r-raster-vector-geospatial
 workbench-beta: 'true'
+pre-beta-date: '2022-10-31'
+old-url: 'https://datacarpentry.github.io/r-raster-vector-geospatial'

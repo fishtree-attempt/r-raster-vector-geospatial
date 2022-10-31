@@ -30,14 +30,14 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 This episode builds upon
-[the previous episode]({{ site.baseurl }}/07-vector-shapefile-attributes-in-r/)
+[the previous episode](07-vector-shapefile-attributes-in-r.Rmd)
 to work with shapefile attributes in R and explores how to plot multiple
 shapefiles. It also covers how to plot raster and vector data together
 on the same plot.
@@ -53,7 +53,7 @@ We will continue to work with the three shapefiles that we loaded in the
 
 ## Plotting Multiple Shapefiles
 
-In the [previous episode]({{ site.baseurl }}/07-vector-shapefile-attributes-in-r/),
+In the [previous episode](07-vector-shapefile-attributes-in-r.Rmd),
 we learned how to plot information from a single shapefile and do
 some plot customization including adding a custom legend. However,
 what if we want to create a more complex plot with many shapefiles

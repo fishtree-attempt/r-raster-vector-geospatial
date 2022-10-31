@@ -30,7 +30,7 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
@@ -159,7 +159,7 @@ we'll need a column that contains the Julian day value.
 
 One way to create a Julian day column is to use `gsub()` on the file name in each
 row. We can replace both the `X` and the `_HARV_NDVI_crop` to extract the Julian
-Day value, just like we did in the [previous episode]({{ site.baseurl }}/13-plot-time-series-rasters-in-r/).
+Day value, just like we did in the [previous episode](13-plot-time-series-rasters-in-r.Rmd).
 
 This time we will use one additional trick to do both of these steps at the same
 time. The vertical bar character ( `|` ) is equivalent to the word "or". Using
@@ -201,7 +201,7 @@ class(avg_NDVI_HARV$julianDay)
 Currently, the values in the Julian day column are stored as class `character`.
 Storing this data as a date object is better - for plotting, data subsetting and
 working with our data. Let's convert. We worked with data conversions
-[in an earlier episode]({{ site.baseurl }}/12-time-series-raster/). For a more
+[in an earlier episode](12-time-series-raster.Rmd). For a more
 introduction to date-time classes, see the NEON Data Skills tutorial
 [Convert Date \& Time Data from Character Class to Date-Time Class (POSIX) in R](https://www.neonscience.org/dc-convert-date-time-POSIX-r).
 
@@ -431,7 +431,7 @@ towards 0 during a time period when we might expect the vegetation to have a
 higher greenness value. Is the vegetation truly senescent or gone or are these
 outlier values that should be removed from the data?
 
-We've seen in [an earlier episode]({{ site.baseurl }}/12-time-series-raster/) that
+We've seen in [an earlier episode](12-time-series-raster.Rmd) that
 data points with very low NDVI values can be associated with
 images that are filled with clouds. Thus, we can attribute the low NDVI values
 to high levels of cloud cover. Is the same thing happening at SJER?

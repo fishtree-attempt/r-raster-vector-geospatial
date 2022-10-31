@@ -31,7 +31,7 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
@@ -142,7 +142,7 @@ First we will load our raster file into R and view the data structure.
 
 
 ```r
-DSM_HARV <- 
+DSM_HARV <-
   raster("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 
 DSM_HARV
@@ -461,7 +461,7 @@ contains data for more than one variable or time period for each cell. By
 default the `raster()` function only imports the first band in a raster
 regardless of whether it has one or more bands. Jump to a later episode in
 this series for information on working with multi-band rasters:
-[Work with Multi-band Rasters in R]({{ site.baseurl }}/05-raster-multi-band-in-r/).
+[Work with Multi-band Rasters in R](05-raster-multi-band-in-r.Rmd).
 
 ## Dealing with Missing Data
 
@@ -637,7 +637,7 @@ no bad data values in this particular raster.
 > 5. Is the file a multi- or single-band raster?
 > 
 > Notice: this file is a hillshade. We will learn about hillshades in the [Working with
-> Multi-band Rasters in R]({{ site.baseurl }}/05-raster-multi-band-in-r/)  episode.
+> Multi-band Rasters in R](05-raster-multi-band-in-r.Rmd)  episode.
 > 
 > > ## Answers
 > > 

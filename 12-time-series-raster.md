@@ -29,7 +29,7 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
@@ -48,7 +48,7 @@ example red, green and blue. A multi-band raster may two or more bands or layers
 of data collected at different times for the same extent (region) and of the
 same resolution. For this episode, we will work with a time series
 of normalized difference vegetation index (NDVI) and RGB data from the Harvard Forest site.
-We introduced the concepts of NDVI and RGB data in [an earlier lesson](https://datacarpentry.org/organization-geospatial/01-intro-raster-data) and worked with an RGB RasterStack in the [Work with Multi-band Rasters in R]({{ site.baseurl }}/ 05-raster-multi-band-in-r/) episode.
+We introduced the concepts of NDVI and RGB data in [an earlier lesson](https://datacarpentry.org/organization-geospatial/01-intro-raster-data) and worked with an RGB RasterStack in the [Work with Multi-band Rasters in R]( 05-raster-multi-band-in-r.Rmd) episode.
 
 In this episode, we will:
 
@@ -132,7 +132,7 @@ all_NDVI_HARV
 
 Now we have a list of all GeoTIFF files in the NDVI directory for Harvard
 Forest. Next, we will create a RasterStack from this list using the `stack()`
-function. We introduced the `stack()` function in [an earlier episode]({{ site.baseurl }}/05-raster-multi-band-in-r/).
+function. We introduced the `stack()` function in [an earlier episode](05-raster-multi-band-in-r.Rmd).
 
 
 ```r

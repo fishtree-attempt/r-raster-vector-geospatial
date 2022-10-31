@@ -27,7 +27,7 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
@@ -527,7 +527,7 @@ AREA_OR_POINT=Area
 We can create a RasterStack from
 several, individual single-band GeoTIFFs too. We will do this in
 a later episode,
-[Raster Time Series Data in R]({{ site.baseurl }}/12-time-series-raster/).
+[Raster Time Series Data in R](12-time-series-raster.Rmd).
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

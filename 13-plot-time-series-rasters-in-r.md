@@ -28,7 +28,7 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
@@ -39,7 +39,7 @@ in R to create publication-quality plots.
 
 ## Before and After
 
-In [the previous episode]({{ site.baseurl }}/12-time-series-raster/), we learned how to plot multi-band
+In [the previous episode](12-time-series-raster.Rmd), we learned how to plot multi-band
 raster data in R using the `facet_wrap()` function. This created a separate panel in our plot
 for each raster band. The plot we created together is shown below:
 

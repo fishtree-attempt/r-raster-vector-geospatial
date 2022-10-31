@@ -25,13 +25,13 @@ source: Rmd
 
 ## Things You'll Need To Complete This Episode
 
-See the [lesson homepage]({{ site.baseurl }}) for detailed information about the software,
+See the [lesson homepage](../index.md) for detailed information about the software,
 data, and other prerequisites you will need to work through the examples in this episode.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-In [an earlier episode]({{ site.baseurl }}/03-raster-reproject-in-r/)
+In [an earlier episode](03-raster-reproject-in-r.Rmd)
 we learned how to handle a situation where you have two different
 files with raster data in different projections. Now we will apply
 those same principles to working with vector data.
@@ -358,7 +358,7 @@ represented in meters.
 
 ## Reproject Vector Data or No?
 
-We saw in [an earlier episode]({{ site.baseurl }}/03-raster-reproject-in-r/) that when working with raster
+We saw in [an earlier episode](03-raster-reproject-in-r.Rmd) that when working with raster
 data in different CRSs, we needed to convert all objects to the same
 CRS. We can do the same thing with our vector data - however, we
 don't need to! When using the `ggplot2` package, `ggplot`
