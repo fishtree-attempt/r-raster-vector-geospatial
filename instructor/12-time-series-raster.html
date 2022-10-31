@@ -24,9 +24,15 @@
       
       <div class="beta-alert alert alert-light alert-dismissable fade show" role="alert">
         
+        <abbr class="icon" title="This lesson is in the Workbench Beta Phase (pre-beta stage) and is a snapshot of Introduction to Geospatial Raster and Vector Data with R from 2022-10-31. Editing this page will have no effect on the lesson. Click here to go back to the styles version." style="text-decoration: unset">
+          <span class="visually-hidden">This lesson is in the Workbench Beta Phase (pre-beta stage) and is a snapshot of Introduction to Geospatial Raster and Vector Data with R from 2022-10-31. Editing this page will have no effect on the lesson.</span>
+          <a href="https://datacarpentry.github.io/r-raster-vector-geospatial" class="external-link alert-link" style="color: #383838">
+            <i aria-hidden="true" class="icon" data-feather="alert-triangle" style="background: #FFC700; border-radius: 5px"></i>
+            <span class="visually-hidden">Visit the styles version of the lesson</span>
+          </a>
+        </abbr>
         
         
-        <i aria-hidden="true" class="icon" data-feather="alert-circle" style="color: #5bbad5"></i>
         
         Workbench Beta | 
         <a href="https://carpentries.typeform.com/to/KRBl4IZM" class="external-link alert-link" style="text-decoration: wavy overline">Give Feedback</a> | 
@@ -338,10 +344,10 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Raster Time Series Data</h1>
-        <p> Last updated on 2022-10-26 | 
+        <p> Last updated on 2022-10-31 | 
         
-        <a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/12-time-series-raster.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
+        <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/12-time-series-raster.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
         
         <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 60 minutes </p>
@@ -385,14 +391,14 @@
 <h3 class="callout-title">Things You’ll Need To Complete This Episode<a class="anchor" aria-label="anchor" href="#prereq1"></a>
 </h3>
 <div class="callout-content">
-<p>See the <a href="%7B%7B%20site.baseurl%20%7D%7D">lesson homepage</a> for detailed information about the software, data, and other prerequisites you will need to work through the examples in this episode.</p>
+<p>See the <a href="index.html">lesson homepage</a> for detailed information about the software, data, and other prerequisites you will need to work through the examples in this episode.</p>
 </div>
 </div>
 </div>
 <p>This episode covers how to work with and plot a raster time series, using an R RasterStack object. It also covers practical assessment of data quality in remote sensing derived imagery.</p>
 <section id="about-raster-time-series-data"><h2 class="section-heading">About Raster Time Series Data<a class="anchor" aria-label="anchor" href="#about-raster-time-series-data"></a>
 </h2>
-<hr class="half-width"><p>A raster data file can contain one single band or many bands. If the raster data contains imagery data, each band may represent reflectance for a different wavelength (color or type of light) or set of wavelengths - for example red, green and blue. A multi-band raster may two or more bands or layers of data collected at different times for the same extent (region) and of the same resolution. For this episode, we will work with a time series of normalized difference vegetation index (NDVI) and RGB data from the Harvard Forest site. We introduced the concepts of NDVI and RGB data in <a href="https://datacarpentry.org/organization-geospatial/01-intro-raster-data" class="external-link">an earlier lesson</a> and worked with an RGB RasterStack in the <a href="%7B%7B%20site.baseurl%20%7D%7D/%2005-raster-multi-band-in-r/">Work with Multi-band Rasters in R</a> episode.</p>
+<hr class="half-width"><p>A raster data file can contain one single band or many bands. If the raster data contains imagery data, each band may represent reflectance for a different wavelength (color or type of light) or set of wavelengths - for example red, green and blue. A multi-band raster may two or more bands or layers of data collected at different times for the same extent (region) and of the same resolution. For this episode, we will work with a time series of normalized difference vegetation index (NDVI) and RGB data from the Harvard Forest site. We introduced the concepts of NDVI and RGB data in <a href="https://datacarpentry.org/organization-geospatial/01-intro-raster-data" class="external-link">an earlier lesson</a> and worked with an RGB RasterStack in the <a href="05-raster-multi-band-in-r.html">Work with Multi-band Rasters in R</a> episode.</p>
 <p>In this episode, we will:</p>
 <ol style="list-style-type: decimal"><li>Import NDVI data in GeoTIFF format.</li>
 <li>Import, explore and plot NDVI data derived for several dates throughout the year.</li>
@@ -461,7 +467,7 @@
 [12] "data/NEON-DS-Landsat-NDVI/HARV/2011/NDVI/293_HARV_ndvi_crop.tif"
 [13] "data/NEON-DS-Landsat-NDVI/HARV/2011/NDVI/309_HARV_ndvi_crop.tif"</code></pre>
 </div>
-<p>Now we have a list of all GeoTIFF files in the NDVI directory for Harvard Forest. Next, we will create a RasterStack from this list using the <code>stack()</code> function. We introduced the <code>stack()</code> function in <a href="%7B%7B%20site.baseurl%20%7D%7D/05-raster-multi-band-in-r/">an earlier episode</a>.</p>
+<p>Now we have a list of all GeoTIFF files in the NDVI directory for Harvard Forest. Next, we will create a RasterStack from this list using the <code>stack()</code> function. We introduced the <code>stack()</code> function in <a href="05-raster-multi-band-in-r.html">an earlier episode</a>.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -913,13 +919,14 @@ max values :                 255,                 255,                 255 </cod
       </div><!--/div.row-->
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
 				<p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
-				<p><a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/12-time-series-raster.Rmd" class="external-link">Edit on Github</a> 
-        
-        <a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/12-time-series-raster.Rmd" class="external-link">Edit on GitHub</a></p>
+        <p>
         
         
+        <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/12-time-series-raster.Rmd" class="external-link">Edit on GitHub</a>
         
-        | <a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> | <a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/" class="external-link">Source</a>
+        
+        | <a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
+        | <a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/fishtree-attempt/r-raster-vector-geospatial/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
@@ -929,7 +936,7 @@ max values :                 255,                 255,                 255 </cod
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.10.6)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.7" class="external-link">varnish (0.2.7)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.8" class="external-link">varnish (0.2.8)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -949,9 +956,9 @@ max values :                 255,                 255,                 255 </cod
   "creativeWorkStatus": "active",
   "url": "https://preview.carpentries.org/r-raster-vector-geospatial/instructor/12-time-series-raster.html",
   "identifier": "https://preview.carpentries.org/r-raster-vector-geospatial/instructor/12-time-series-raster.html",
-  "dateCreated": "2022-10-26",
-  "dateModified": "2022-10-26",
-  "datePublished": "2022-10-26"
+  "dateCreated": "2022-10-31",
+  "dateModified": "2022-10-31",
+  "datePublished": "2022-10-31"
 }
 
   </script><script>
