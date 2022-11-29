@@ -342,7 +342,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Reproject Raster Data</h1>
-        <p> Last updated on 2022-11-03 | 
+        <p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/03-raster-reproject-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -520,8 +520,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ORDER[2],
             LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["unknown"],
-        AREA["World - N hemisphere - 78°W to 72°W - by country"],
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
         BBOX[0,-78,84,-72]],
     ID["EPSG",32618]] </code></pre>
 </div>
@@ -552,7 +552,8 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
         AXIS["geodetic latitude (Lat)",north,
             ORDER[2],
             ANGLEUNIT["degree",0.0174532925199433,
-                ID["EPSG",9122]]]] </code></pre>
+                ID["EPSG",9122]]],
+    REMARK["Axis order reversed compared to EPSG:4326"]] </code></pre>
 </div>
 <p><code>DTM_HARV</code> is in the UTM projection, with units of meters. <code>DTM_hill_HARV</code> is in <code>Geographic WGS84</code> - which is represented by latitude and longitude values.</p>
 </div>
@@ -636,8 +637,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ORDER[2],
             LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["unknown"],
-        AREA["World - N hemisphere - 78°W to 72°W - by country"],
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
         BBOX[0,-78,84,-72]],
     ID["EPSG",32618]] </code></pre>
 </div>
@@ -667,7 +668,8 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
         AXIS["geodetic latitude (Lat)",north,
             ORDER[2],
             ANGLEUNIT["degree",0.0174532925199433,
-                ID["EPSG",9122]]]] </code></pre>
+                ID["EPSG",9122]]],
+    REMARK["Axis order reversed compared to EPSG:4326"]] </code></pre>
 </div>
 <p>We can also compare the extent of the two objects.</p>
 <div class="codewrapper sourceCode" id="cb15">
@@ -936,7 +938,7 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.10.8)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.10.8" class="external-link">sandpaper (0.10.8)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.9" class="external-link">varnish (0.2.9)</a>.</p>
 			</div>
@@ -959,8 +961,8 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
   "url": "https://preview.carpentries.org/r-raster-vector-geospatial/03-raster-reproject-in-r.html",
   "identifier": "https://preview.carpentries.org/r-raster-vector-geospatial/03-raster-reproject-in-r.html",
   "dateCreated": "2022-11-03",
-  "dateModified": "2022-11-03",
-  "datePublished": "2022-11-22"
+  "dateModified": "2022-11-29",
+  "datePublished": "2022-11-29"
 }
 
   </script><script>

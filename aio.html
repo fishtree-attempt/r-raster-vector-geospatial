@@ -414,7 +414,7 @@
         
 <section id="aio-01-raster-structure"><p>Content from <a href="01-raster-structure.html">Intro to Raster Data</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/01-raster-structure.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -675,7 +675,7 @@ Raster plot with ggplot2 using the viridis color scale
   Show plot
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>See <code>?plot</code> for more arguments to customize the plot</p>
 <div class="codewrapper sourceCode" id="cb16">
@@ -745,8 +745,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ORDER[2],
             LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["unknown"],
-        AREA["World - N hemisphere - 78°W to 72°W - by country"],
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
         BBOX[0,-78,84,-72]],
     ID["EPSG",32618]] </code></pre>
 </div>
@@ -769,7 +769,7 @@ PROJCRS["WGS 84 / UTM zone 18N",
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><code>+units=m</code> tells us that our data is in meters.</p>
 </div>
@@ -893,7 +893,7 @@ PROJCRS["WGS 84 / UTM zone 18N",
   Answers
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1012,7 +1012,7 @@ AREA_OR_POINT=Area </code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <pre><code>1. If this file has the same CRS as DSM_HARV?  Yes: UTM Zone 18, WGS84, meters.
 2. What format `NoDataValues` take?  -9999
@@ -1056,7 +1056,7 @@ AREA_OR_POINT=Area </code></pre>
 </div>
 </section></section><section id="aio-02-raster-plot"><p>Content from <a href="02-raster-plot.html">Plot Raster Data</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/02-raster-plot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -1298,7 +1298,7 @@ Levels: (300,350] (350,400] (400,450]</code></pre>
   Answers
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1434,7 +1434,7 @@ values     : -0.7136298, 0.9999997  (min, max)</code></pre>
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1532,7 +1532,7 @@ values     : -0.7136298, 0.9999997  (min, max)</code></pre>
 </div>
 </section></section><section id="aio-03-raster-reproject-in-r"><p>Content from <a href="03-raster-reproject-in-r.html">Reproject Raster Data</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/03-raster-reproject-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -1710,8 +1710,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ORDER[2],
             LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["unknown"],
-        AREA["World - N hemisphere - 78°W to 72°W - by country"],
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
         BBOX[0,-78,84,-72]],
     ID["EPSG",32618]] </code></pre>
 </div>
@@ -1742,7 +1742,8 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
         AXIS["geodetic latitude (Lat)",north,
             ORDER[2],
             ANGLEUNIT["degree",0.0174532925199433,
-                ID["EPSG",9122]]]] </code></pre>
+                ID["EPSG",9122]]],
+    REMARK["Axis order reversed compared to EPSG:4326"]] </code></pre>
 </div>
 <p><code>DTM_HARV</code> is in the UTM projection, with units of meters. <code>DTM_hill_HARV</code> is in <code>Geographic WGS84</code> - which is represented by latitude and longitude values.</p>
 </div>
@@ -1829,8 +1830,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ORDER[2],
             LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["unknown"],
-        AREA["World - N hemisphere - 78°W to 72°W - by country"],
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
         BBOX[0,-78,84,-72]],
     ID["EPSG",32618]] </code></pre>
 </div>
@@ -1860,7 +1861,8 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
         AXIS["geodetic latitude (Lat)",north,
             ORDER[2],
             ANGLEUNIT["degree",0.0174532925199433,
-                ID["EPSG",9122]]]] </code></pre>
+                ID["EPSG",9122]]],
+    REMARK["Axis order reversed compared to EPSG:4326"]] </code></pre>
 </div>
 <p>We can also compare the extent of the two objects.</p>
 <div class="codewrapper sourceCode" id="cb15">
@@ -2104,7 +2106,7 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
 </div>
 </section></section><section id="aio-04-raster-calculations-in-r"><p>Content from <a href="04-raster-calculations-in-r.html">Raster Calculations</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/04-raster-calculations-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -2192,7 +2194,7 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2363,7 +2365,7 @@ AREA_OR_POINT=Area </code></pre>
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>There are missing values in our data, so we need to specify <code>na.rm = TRUE</code>.</li>
@@ -2575,7 +2577,7 @@ AREA_OR_POINT=Area </code></pre>
   Answers
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>Use the <code>overlay()</code> function to subtract the two rasters &amp; create the CHM.</li>
@@ -2692,7 +2694,7 @@ AREA_OR_POINT=Area </code></pre>
 </div>
 </section></section><section id="aio-05-raster-multi-band-in-r"><p>Content from <a href="05-raster-multi-band-in-r.html">Work With Multi-Band Rasters</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/05-raster-multi-band-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -3235,7 +3237,7 @@ AREA_OR_POINT=Area </code></pre>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>51848 bytes</code></pre>
+<pre class="output" tabindex="0"><code>52808 bytes</code></pre>
 </div>
 <p>Now we will create a RasterBrick object from our RasterStack data and view its size:</p>
 <div class="codewrapper sourceCode" id="cb33">
@@ -3249,7 +3251,7 @@ AREA_OR_POINT=Area </code></pre>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>170898672 bytes</code></pre>
+<pre class="output" tabindex="0"><code>170898912 bytes</code></pre>
 </div>
 <p>Notice that in the RasterBrick, all of the bands are stored within the actual object. Thus, the RasterBrick object size is much larger than the RasterStack object.</p>
 <p>You use the <code>plotRGB()</code> function to plot a RasterBrick too:</p>
@@ -3413,7 +3415,7 @@ see '?methods' for accessing help and source code</code></pre>
 </div>
 </section></section><section id="aio-06-vector-open-shapefile-in-r"><p>Content from <a href="06-vector-open-shapefile-in-r.html">Open and Plot Shapefiles</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/06-vector-open-shapefile-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -3662,7 +3664,7 @@ Projected CRS: WGS 84 / UTM zone 18N
   Answers
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>First we import the data:</p>
 <div class="codewrapper sourceCode" id="cb13">
@@ -3866,7 +3868,7 @@ PROJCRS["WGS 84 / UTM zone 18N",
 </div>
 </section></section><section id="aio-07-vector-shapefile-attributes-in-r"><p>Content from <a href="07-vector-shapefile-attributes-in-r.html">Explore and Plot by Vector Layer Attributes</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/07-vector-shapefile-attributes-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -4688,7 +4690,7 @@ Map of the continental United States where the state lines are colored by region
 </div>
 </section></section><section id="aio-08-vector-plot-shapefiles-custom-legend"><p>Content from <a href="08-vector-plot-shapefiles-custom-legend.html">Plot Multiple Shapefiles</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/08-vector-plot-shapefiles-custom-legend.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -4837,7 +4839,7 @@ Map of the continental United States where the state lines are colored by region
   Answers
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>First we need to read in the data and see how many unique soils are represented in the <code>soilTypeOr</code> attribute.</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -4940,7 +4942,7 @@ Projected CRS: WGS 84 / UTM zone 18N</code></pre>
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4978,7 +4980,7 @@ Projected CRS: WGS 84 / UTM zone 18N</code></pre>
 </div>
 </section></section><section id="aio-09-vector-when-data-dont-line-up-crs"><p>Content from <a href="09-vector-when-data-dont-line-up-crs.html">Handling Spatial Projection &amp; CRS</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/09-vector-when-data-dont-line-up-crs.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -5393,7 +5395,7 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 </section></section><section id="aio-10-vector-csv-to-shapefile-in-r"><p>Content from <a href="10-vector-csv-to-shapefile-in-r.html">Convert from .csv to a Shapefile</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/10-vector-csv-to-shapefile-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -5794,7 +5796,7 @@ PROJCRS["WGS 84 / UTM zone 18N",
   Answers
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>First we will read in the new csv file and look at the data structure.</li>
@@ -5945,7 +5947,7 @@ GEOGCRS["WGS 84",
 </div>
 </section></section><section id="aio-11-vector-raster-integration"><p>Content from <a href="11-vector-raster-integration.html">Manipulate Raster Data</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/11-vector-raster-integration.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -6124,7 +6126,7 @@ GEOGCRS["WGS 84",
   Answers
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6322,7 +6324,7 @@ attr(,"package")
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6403,7 +6405,7 @@ attr(,"package")
 </div>
 </section></section><section id="aio-12-time-series-raster"><p>Content from <a href="12-time-series-raster.html">Raster Time Series Data</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/12-time-series-raster.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -6976,7 +6978,7 @@ max values :                 255,                 255,                 255 </cod
 </div>
 </section></section><section id="aio-13-plot-time-series-rasters-in-r"><p>Content from <a href="13-plot-time-series-rasters-in-r.html">Create Publication-quality Graphics</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/13-plot-time-series-rasters-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -7073,7 +7075,7 @@ max values :                 255,                 255,                 255 </cod
   Answers
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Learners can find this information in the help files for the <code>theme()</code> function. The parameter to set is called <code>face</code>.</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -7273,7 +7275,7 @@ max values :                 255,                 255,                 255 </cod
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7317,7 +7319,7 @@ max values :                 255,                 255,                 255 </cod
 </div>
 </section></section><section id="aio-14-extract-ndvi-from-rasters-in-r"><p>Content from <a href="14-extract-ndvi-from-rasters-in-r.html">Derive Values from Raster Time Series</a></p>
 <hr>
-<p> Last updated on 2022-11-03 | 
+<p> Last updated on 2022-11-29 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/14-extract-ndvi-from-rasters-in-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -7913,7 +7915,7 @@ X197_HARV_ndvi_crop 0.893250 HARV 2011       197 2011-07-16</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.10.8)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.10.8" class="external-link">sandpaper (0.10.8)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.9" class="external-link">varnish (0.2.9)</a>.</p>
 			</div>
@@ -7937,8 +7939,8 @@ X197_HARV_ndvi_crop 0.893250 HARV 2011       197 2011-07-16</code></pre>
   "url": "https://preview.carpentries.org/r-raster-vector-geospatial/aio.html",
   "identifier": "https://preview.carpentries.org/r-raster-vector-geospatial/aio.html",
   "dateCreated": "2022-11-03",
-  "dateModified": "2022-11-22",
-  "datePublished": "2022-11-22"
+  "dateModified": "2022-11-29",
+  "datePublished": "2022-11-29"
 }
 
   </script><script>
