@@ -188,8 +188,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ORDER[2],
             LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["unknown"],
-        AREA["World - N hemisphere - 78°W to 72°W - by country"],
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
         BBOX[0,-78,84,-72]],
     ID["EPSG",32618]] 
 ```
@@ -217,7 +217,8 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
         AXIS["geodetic latitude (Lat)",north,
             ORDER[2],
             ANGLEUNIT["degree",0.0174532925199433,
-                ID["EPSG",9122]]]] 
+                ID["EPSG",9122]]],
+    REMARK["Axis order reversed compared to EPSG:4326"]] 
 ```
 
 `DTM_HARV` is in the UTM projection, with units of meters.
@@ -320,8 +321,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ORDER[2],
             LENGTHUNIT["metre",1]],
     USAGE[
-        SCOPE["unknown"],
-        AREA["World - N hemisphere - 78°W to 72°W - by country"],
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
         BBOX[0,-78,84,-72]],
     ID["EPSG",32618]] 
 ```
@@ -348,7 +349,8 @@ GEOGCRS["WGS 84 (with axis order normalized for visualization)",
         AXIS["geodetic latitude (Lat)",north,
             ORDER[2],
             ANGLEUNIT["degree",0.0174532925199433,
-                ID["EPSG",9122]]]] 
+                ID["EPSG",9122]]],
+    REMARK["Axis order reversed compared to EPSG:4326"]] 
 ```
 
 We can also compare the extent of the two objects.

@@ -561,7 +561,7 @@ object.size(RGB_stack_HARV)
 ```
 
 ```{.output}
-51848 bytes
+52808 bytes
 ```
 
 Now we will create a RasterBrick object from our RasterStack data and view its size:
@@ -574,7 +574,7 @@ object.size(RGB_brick_HARV)
 ```
 
 ```{.output}
-170898672 bytes
+170898912 bytes
 ```
 
 Notice that in the RasterBrick, all of the bands are stored within the actual
