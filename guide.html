@@ -346,47 +346,107 @@
 </h2>
 <hr class="half-width"></section><section id="lesson-motivation-and-learning-objectives"><h2 class="section-heading">Lesson motivation and learning objectives<a class="anchor" aria-label="anchor" href="#lesson-motivation-and-learning-objectives"></a>
 </h2>
-<hr class="half-width"><p>This lesson is designed to introduce learners to the fundamental principles and skills for working with raster and vector geospatial data in R. It begins by introducing the structure of and simple plotting of raster data. It then covers re-projection of raster data, performing raster math, and working with multi-band raster data. After introducing raster data, the lesson moves into working with vector data. Line, point, and polygon shapefiles are included in the data. Learners will plot multiple raster and/or vector layers in a single plot, and learn how to customize plot elements such as legends and titles. They will also learn how to read data in from a csv formatted file and re-format it to a shapefile. Lastly, learners will work with multi-layered raster data set representing time series data and extract summary statistics from this data.</p>
+<hr class="half-width"><p>This lesson is designed to introduce learners to the fundamental
+principles and skills for working with raster and vector geospatial data
+in R. It begins by introducing the structure of and simple plotting of
+raster data. It then covers re-projection of raster data, performing
+raster math, and working with multi-band raster data. After introducing
+raster data, the lesson moves into working with vector data. Line,
+point, and polygon shapefiles are included in the data. Learners will
+plot multiple raster and/or vector layers in a single plot, and learn
+how to customize plot elements such as legends and titles. They will
+also learn how to read data in from a csv formatted file and re-format
+it to a shapefile. Lastly, learners will work with multi-layered raster
+data set representing time series data and extract summary statistics
+from this data.</p>
 </section><section id="lesson-design"><h2 class="section-heading">Lesson design<a class="anchor" aria-label="anchor" href="#lesson-design"></a>
 </h2>
 <hr class="half-width"><div class="section level4">
 <h4 id="overall-comments">Overall comments<a class="anchor" aria-label="anchor" href="#overall-comments"></a></h4>
-<ul><li><p>As of initial release of this lesson (August 2018), the timing is set to be the same for each episode. This is very likely incorrect and will need to be updated as these lessons are taught. If you teach this lesson, please put in an issue or PR to suggest an updating timing scheme!!</p></li>
-<li><p>The code examples presented in each episode assume that the learners still have all of the data and packages loaded from all previous episodes in this lesson. If learners close out of their R session during the breaks or at the end of the first day, they will need to either save the workspace or reload the data and packages. Because of this, it is essential that learners save their code to a script throughout the lesson.</p></li>
+<ul><li><p>As of initial release of this lesson (August 2018), the timing is
+set to be the same for each episode. This is very likely incorrect and
+will need to be updated as these lessons are taught. If you teach this
+lesson, please put in an issue or PR to suggest an updating timing
+scheme!!</p></li>
+<li><p>The code examples presented in each episode assume that the
+learners still have all of the data and packages loaded from all
+previous episodes in this lesson. If learners close out of their R
+session during the breaks or at the end of the first day, they will need
+to either save the workspace or reload the data and packages. Because of
+this, it is essential that learners save their code to a script
+throughout the lesson.</p></li>
 </ul></div>
 <div class="section level4">
-<h4 id="intro-to-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/01-raster-structure.md%20%%7D">Intro to Raster Data in R</a><a class="anchor" aria-label="anchor" href="#intro-to-raster-data-in-r"></a></h4>
-<ul><li>Be sure to introduce the datasets that will be used in this lesson. There are many data files. It may be helpful to draw a diagram on the board showing the types of data that will be plotted and analyzed throughout the lesson.</li>
-<li>If the <a href="https://datacarpentry.org/organization-geospatial/" class="external-link">Introduction to Geospatial Concepts</a> lesson was included in your workshop, learners will have been introduced to the GDAL library. It will be useful to make the connection back to that lesson explicitly.</li>
-<li>If the <a href="https://datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to R for Geospatial Data</a> lesson was included in your workshop, learners will be familiar with the idea of packages and with most of the functions used in this lesson.</li>
-<li>The Dealing with Missing Data and Bad Data Values in Rasters sections have several plots showing alternative ways of displaying missing data. The code for generating these plots is <strong>not</strong> shared with the learners, as it relies on many functions they have not yet learned. For these and other plots with hidden demonstration code, show the images in the lesson page while discussing those examples.</li>
-<li>Be sure to draw a distinction between the DTM and the DSM files, as these two datasets will be used throughout the lesson.</li>
+<h4 id="intro-to-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/01-raster-structure.md%20%%7D">Intro
+to Raster Data in R</a><a class="anchor" aria-label="anchor" href="#intro-to-raster-data-in-r"></a></h4>
+<ul><li>Be sure to introduce the datasets that will be used in this lesson.
+There are many data files. It may be helpful to draw a diagram on the
+board showing the types of data that will be plotted and analyzed
+throughout the lesson.</li>
+<li>If the <a href="https://datacarpentry.org/organization-geospatial/" class="external-link">Introduction
+to Geospatial Concepts</a> lesson was included in your workshop,
+learners will have been introduced to the GDAL library. It will be
+useful to make the connection back to that lesson explicitly.</li>
+<li>If the <a href="https://datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to R
+for Geospatial Data</a> lesson was included in your workshop, learners
+will be familiar with the idea of packages and with most of the
+functions used in this lesson.</li>
+<li>The Dealing with Missing Data and Bad Data Values in Rasters
+sections have several plots showing alternative ways of displaying
+missing data. The code for generating these plots is
+<strong>not</strong> shared with the learners, as it relies on many
+functions they have not yet learned. For these and other plots with
+hidden demonstration code, show the images in the lesson page while
+discussing those examples.</li>
+<li>Be sure to draw a distinction between the DTM and the DSM files, as
+these two datasets will be used throughout the lesson.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="plot-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/02-raster-plot.md%20%%7D">Plot Raster Data in R</a><a class="anchor" aria-label="anchor" href="#plot-raster-data-in-r"></a></h4>
+<h4 id="plot-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/02-raster-plot.md%20%%7D">Plot
+Raster Data in R</a><a class="anchor" aria-label="anchor" href="#plot-raster-data-in-r"></a></h4>
 <ul><li>
-<code>geom_bar()</code> is a new geom for the learners. They were introduced to <code>geom_col()</code> in the <a href="https://datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to R for Geospatial Data</a> lesson.</li>
+<code>geom_bar()</code> is a new geom for the learners. They were
+introduced to <code>geom_col()</code> in the <a href="https://datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to R
+for Geospatial Data</a> lesson.</li>
 <li>
-<code>dplyr</code> syntax should be familiar to your learners from the <a href="https://datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to R for Geospatial Data</a> lesson.</li>
-<li>This may be the first time learners are exposed to hex colors, so be sure to explain that concept.</li>
-<li>Starting in this episode and continuing throughout the lesson, the <code>ggplot</code> calls can be very long. Be sure to explicitly describe each step of the function call and what it is doing for the overall plot.</li>
+<code>dplyr</code> syntax should be familiar to your learners from
+the <a href="https://datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction
+to R for Geospatial Data</a> lesson.</li>
+<li>This may be the first time learners are exposed to hex colors, so be
+sure to explain that concept.</li>
+<li>Starting in this episode and continuing throughout the lesson, the
+<code>ggplot</code> calls can be very long. Be sure to explicitly
+describe each step of the function call and what it is doing for the
+overall plot.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="reproject-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/03-raster-reproject-in-r.md%20%%7D">Reproject Raster Data in R</a><a class="anchor" aria-label="anchor" href="#reproject-raster-data-in-r"></a></h4>
+<h4 id="reproject-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/03-raster-reproject-in-r.md%20%%7D">Reproject
+Raster Data in R</a><a class="anchor" aria-label="anchor" href="#reproject-raster-data-in-r"></a></h4>
 <ul><li>No notes yet. Please add your tips and comments!</li>
 </ul></div>
 <div class="section level4">
-<h4 id="raster-calculations-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/04-raster-calculations-in-r.md%20%%7D">Raster Calculations in R</a><a class="anchor" aria-label="anchor" href="#raster-calculations-in-r"></a></h4>
-<ul><li>The <code>overlay()</code> function syntax is fairly complex compared to other function calls the learners have seen. Be sure to explain it in detail.</li>
+<h4 id="raster-calculations-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/04-raster-calculations-in-r.md%20%%7D">Raster
+Calculations in R</a><a class="anchor" aria-label="anchor" href="#raster-calculations-in-r"></a></h4>
+<ul><li>The <code>overlay()</code> function syntax is fairly complex
+compared to other function calls the learners have seen. Be sure to
+explain it in detail.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="work-with-multi-band-rasters-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/05-raster-multi-band-in-r.md%20%%7D">Work With Multi-Band Rasters in R</a><a class="anchor" aria-label="anchor" href="#work-with-multi-band-rasters-in-r"></a></h4>
+<h4 id="work-with-multi-band-rasters-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/05-raster-multi-band-in-r.md%20%%7D">Work
+With Multi-Band Rasters in R</a><a class="anchor" aria-label="anchor" href="#work-with-multi-band-rasters-in-r"></a></h4>
 <ul><li>No notes yet. Please add your tips and comments!</li>
 </ul></div>
 <div class="section level4">
-<h4 id="open-and-plot-shapefiles-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/06-vector-open-shapefile-in-r.md%20%%7D">Open and Plot Shapefiles in R</a><a class="anchor" aria-label="anchor" href="#open-and-plot-shapefiles-in-r"></a></h4>
-<ul><li>Learners may have heard of the <code>sp</code> package. If it comes up, explain that <code>sf</code> is a more modern update of <code>sp</code>.</li>
-<li>There is a known bug in the <code>geom_sf()</code> function that leads to an intermittent error on some platforms. If you see the following error message, try to re-run your plotting command and it should work. The <code>ggplot</code> development team is working on fixing this bug.</li>
+<h4 id="open-and-plot-shapefiles-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/%7B%%20link%20_episodes/06-vector-open-shapefile-in-r.md%20%%7D">Open
+and Plot Shapefiles in R</a><a class="anchor" aria-label="anchor" href="#open-and-plot-shapefiles-in-r"></a></h4>
+<ul><li>Learners may have heard of the <code>sp</code> package. If it comes
+up, explain that <code>sf</code> is a more modern update of
+<code>sp</code>.</li>
+<li>There is a known bug in the <code>geom_sf()</code> function that
+leads to an intermittent error on some platforms. If you see the
+following error message, try to re-run your plotting command and it
+should work. The <code>ggplot</code> development team is working on
+fixing this bug.</li>
 </ul></div>
 </section><section id="error-message"><h2 class="section-heading">Error message<a class="anchor" aria-label="anchor" href="#error-message"></a>
 </h2>
@@ -396,37 +456,53 @@ polygon edge not found</code></pre>
 <p>{: .error}</p>
 </blockquote>
 <div class="section level4">
-<h4 id="explore-and-plot-by-shapefile-attributes"><a href="%7B%7B%20relative_root_path%20%7D%7D/07-vector-shapefile-attributes-in-r/">Explore and Plot by Shapefile Attributes</a><a class="anchor" aria-label="anchor" href="#explore-and-plot-by-shapefile-attributes"></a></h4>
+<h4 id="explore-and-plot-by-shapefile-attributes"><a href="%7B%7B%20relative_root_path%20%7D%7D/07-vector-shapefile-attributes-in-r/">Explore
+and Plot by Shapefile Attributes</a><a class="anchor" aria-label="anchor" href="#explore-and-plot-by-shapefile-attributes"></a></h4>
 <ul><li>No notes yet. Please add your tips and comments!</li>
 </ul></div>
 <div class="section level4">
-<h4 id="plot-multiple-shapefiles-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/08-vector-plot-shapefiles-custom-legend/">Plot Multiple Shapefiles in R</a><a class="anchor" aria-label="anchor" href="#plot-multiple-shapefiles-in-r"></a></h4>
+<h4 id="plot-multiple-shapefiles-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/08-vector-plot-shapefiles-custom-legend/">Plot
+Multiple Shapefiles in R</a><a class="anchor" aria-label="anchor" href="#plot-multiple-shapefiles-in-r"></a></h4>
 <ul><li>No notes yet. Please add your tips and comments!</li>
 </ul></div>
 <div class="section level4">
-<h4 id="handling-spatial-projection-crs-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/09-vector-when-data-dont-line-up-crs/">Handling Spatial Projection &amp; CRS in R</a><a class="anchor" aria-label="anchor" href="#handling-spatial-projection-crs-in-r"></a></h4>
-<ul><li>Note that, although <code>ggplot</code> automatically reprojects vector data when plotting multiple shapefiles with different projections together, it is still important to be aware of the CRSs of your data and to keep track of how they are being transformed.</li>
+<h4 id="handling-spatial-projection-crs-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/09-vector-when-data-dont-line-up-crs/">Handling
+Spatial Projection &amp; CRS in R</a><a class="anchor" aria-label="anchor" href="#handling-spatial-projection-crs-in-r"></a></h4>
+<ul><li>Note that, although <code>ggplot</code> automatically reprojects
+vector data when plotting multiple shapefiles with different projections
+together, it is still important to be aware of the CRSs of your data and
+to keep track of how they are being transformed.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="convert-from--csv-to-a-shapefile-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/10-vector-csv-to-shapefile-in-r/">Convert from .csv to a Shapefile in R</a><a class="anchor" aria-label="anchor" href="#convert-from--csv-to-a-shapefile-in-r"></a></h4>
+<h4 id="convert-from--csv-to-a-shapefile-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/10-vector-csv-to-shapefile-in-r/">Convert
+from .csv to a Shapefile in R</a><a class="anchor" aria-label="anchor" href="#convert-from--csv-to-a-shapefile-in-r"></a></h4>
 <ul><li>No notes yet. Please add your tips and comments!</li>
 </ul></div>
 <div class="section level4">
-<h4 id="manipulate-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/11-vector-raster-integration/">Manipulate Raster Data in R</a><a class="anchor" aria-label="anchor" href="#manipulate-raster-data-in-r"></a></h4>
-<ul><li>Learners have not yet been exposed to the <code>melt()</code> function in this workshop. They will need to have the syntax explained.</li>
+<h4 id="manipulate-raster-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/11-vector-raster-integration/">Manipulate
+Raster Data in R</a><a class="anchor" aria-label="anchor" href="#manipulate-raster-data-in-r"></a></h4>
+<ul><li>Learners have not yet been exposed to the <code>melt()</code>
+function in this workshop. They will need to have the syntax
+explained.</li>
 <li>This is the first instance of a faceted plot in this workshop.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="raster-time-series-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/12-time-series-raster/">Raster Time Series Data in R</a><a class="anchor" aria-label="anchor" href="#raster-time-series-data-in-r"></a></h4>
+<h4 id="raster-time-series-data-in-r"><a href="%7B%7B%20relative_root_path%20%7D%7D/12-time-series-raster/">Raster
+Time Series Data in R</a><a class="anchor" aria-label="anchor" href="#raster-time-series-data-in-r"></a></h4>
 <ul><li>No notes yet. Please add your tips and comments!</li>
 </ul></div>
 <div class="section level4">
-<h4 id="create-publication-quality-graphics"><a href="%7B%7B%20relative_root_path%20%7D%7D/13-plot-time-series-rasters-in-r/">Create Publication-quality Graphics</a><a class="anchor" aria-label="anchor" href="#create-publication-quality-graphics"></a></h4>
-<ul><li>Be sure to show learners the before and after plots to motivate the complexity of the <code>ggplot</code> calls that will be used in this episode.</li>
+<h4 id="create-publication-quality-graphics"><a href="%7B%7B%20relative_root_path%20%7D%7D/13-plot-time-series-rasters-in-r/">Create
+Publication-quality Graphics</a><a class="anchor" aria-label="anchor" href="#create-publication-quality-graphics"></a></h4>
+<ul><li>Be sure to show learners the before and after plots to motivate the
+complexity of the <code>ggplot</code> calls that will be used in this
+episode.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="derive-values-from-raster-time-series"><a href="%7B%7B%20relative_root_path%20%7D%7D/14-extract-ndvi-from-rasters-in-r/">Derive Values from Raster Time Series</a><a class="anchor" aria-label="anchor" href="#derive-values-from-raster-time-series"></a></h4>
-<ul><li>This is the first time in the workshop that learners will have worked with date data.</li>
+<h4 id="derive-values-from-raster-time-series"><a href="%7B%7B%20relative_root_path%20%7D%7D/14-extract-ndvi-from-rasters-in-r/">Derive
+Values from Raster Time Series</a><a class="anchor" aria-label="anchor" href="#derive-values-from-raster-time-series"></a></h4>
+<ul><li>This is the first time in the workshop that learners will have
+worked with date data.</li>
 </ul></div>
 <div class="section level4">
 <h4 id="concluding-remarks">Concluding remarks<a class="anchor" aria-label="anchor" href="#concluding-remarks"></a></h4>
@@ -434,22 +510,49 @@ polygon edge not found</code></pre>
 </ul></div>
 </section><section id="technical-tips-and-tricks"><h2 class="section-heading">Technical tips and tricks<a class="anchor" aria-label="anchor" href="#technical-tips-and-tricks"></a>
 </h2>
-<hr class="half-width"><ul><li><p>Leave about 30 minutes at the start of each workshop and another 15 mins at the start of each session for technical difficulties like WiFi and installing things (even if you asked students to install in advance, longer if not).</p></li>
-<li><p>Don’t worry about being correct or knowing the material back-to-front. Use mistakes as teaching moments: the most vital skill you can impart is how to debug and recover from unexpected errors.</p></li>
+<hr class="half-width"><ul><li><p>Leave about 30 minutes at the start of each workshop and another
+15 mins at the start of each session for technical difficulties like
+WiFi and installing things (even if you asked students to install in
+advance, longer if not).</p></li>
+<li><p>Don’t worry about being correct or knowing the material
+back-to-front. Use mistakes as teaching moments: the most vital skill
+you can impart is how to debug and recover from unexpected
+errors.</p></li>
 </ul></section><section id="scheduling-tips"><h2 class="section-heading">Scheduling tips<a class="anchor" aria-label="anchor" href="#scheduling-tips"></a>
 </h2>
-<hr class="half-width"><ul><li>You will almost certainly not have enough time to teach this entire curriculum. If pressed for time, here is one possible shortened schedule you can use (used in a 4 half-day curriculum in May 2022):
-<ul><li>Day 1: Workshop intro, installation, troubleshooting. Episodes 1-5 of Introduction to R for Geospatial Data. Skip everything in Episode 3 after “Vectors and Type Coercion, but keep Challenge 4. Skip everything in Episode 4 starting at”Adding columns and rows in data frames“. Only include the”Data frames" section of Episode 5. You can introduce factors on-the-fly in the rest of the curriculum.</li>
-<li>Day 2: Episodes 6-8 of Introduction to R for Geospatial Data, Episodes 6-8 of R for Raster and Vector Data (as far as you get in Episode 8).</li>
-<li>Day 3: Episodes 8-10 of R for Raster and Vector Data, Episodes 1-2 of R for Raster and Vector Data.</li>
-<li>Day 4: Episodes 3, 11 of Raster and Vector Data (and whatever else you’d like to cover), workshop conclusion.</li>
+<hr class="half-width"><ul><li>You will almost certainly not have enough time to teach this entire
+curriculum. If pressed for time, here is one possible shortened schedule
+you can use (used in a 4 half-day curriculum in May 2022):
+<ul><li>Day 1: Workshop intro, installation, troubleshooting. Episodes 1-5
+of Introduction to R for Geospatial Data. Skip everything in Episode 3
+after “Vectors and Type Coercion, but keep Challenge 4. Skip everything
+in Episode 4 starting at”Adding columns and rows in data frames”. Only
+include the “Data frames” section of Episode 5. You can introduce
+factors on-the-fly in the rest of the curriculum.</li>
+<li>Day 2: Episodes 6-8 of Introduction to R for Geospatial Data,
+Episodes 6-8 of R for Raster and Vector Data (as far as you get in
+Episode 8).</li>
+<li>Day 3: Episodes 8-10 of R for Raster and Vector Data, Episodes 1-2
+of R for Raster and Vector Data.</li>
+<li>Day 4: Episodes 3, 11 of Raster and Vector Data (and whatever else
+you’d like to cover), workshop conclusion.</li>
 </ul></li>
-<li>It is a good idea to start your teaching with <strong>vector data</strong> (which is more immediately relevant to a greater number of researchers, particularly those outside of environmental sciences), then move to raster data if there is extra time.</li>
-<li>Skip Introduction to Geospatial Concepts. Spend at most 30 minutes reviewing things as this is currently not an interactive curriculum. Most of the concepts you can cover within the R for Raster and Vector Data curriculum.</li>
+<li>It is a good idea to start your teaching with <strong>vector
+data</strong> (which is more immediately relevant to a greater number of
+researchers, particularly those outside of environmental sciences), then
+move to raster data if there is extra time.</li>
+<li>Skip Introduction to Geospatial Concepts. Spend at most 30 minutes
+reviewing things as this is currently not an interactive curriculum.
+Most of the concepts you can cover within the R for Raster and Vector
+Data curriculum.</li>
 </ul></section><section id="common-problems"><h2 class="section-heading">Common problems<a class="anchor" aria-label="anchor" href="#common-problems"></a>
 </h2>
-<hr class="half-width"><ul><li>Pre-installation for this curriculum is particularly important because geospatial data and software is large and can take a very long time to load during a workshop. Make sure everything is installed and downloaded ahead of time.</li>
-<li>TBA - Instructors please add other situations you encounter here.</li>
+<hr class="half-width"><ul><li>Pre-installation for this curriculum is particularly important
+because geospatial data and software is large and can take a very long
+time to load during a workshop. Make sure everything is installed and
+downloaded ahead of time.</li>
+<li>TBA - Instructors please add other situations you encounter
+here.</li>
 </ul><p>{% include links.md %}</p>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">

@@ -387,7 +387,8 @@ HTTP status was '404 Not Found'</code></pre>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Import .csv files containing x,y coordinate locations into R as a data frame.</li>
+<ul><li>Import .csv files containing x,y coordinate locations into R as a
+data frame.</li>
 <li>Convert a data frame to a spatial object.</li>
 <li>Export a spatial object to a text file.</li>
 </ul></div>
@@ -400,25 +401,48 @@ HTTP status was '404 Not Found'</code></pre>
 <i class="callout-icon" data-feather="check"></i>
 </div>
 <div id="things-youll-need-to-complete-this-episode" class="callout-inner">
-<h3 class="callout-title">Things You’ll Need To Complete This Episode<a class="anchor" aria-label="anchor" href="#prereq1"></a>
+<h3 class="callout-title">Things You’ll Need To Complete This
+Episode<a class="anchor" aria-label="anchor" href="#prereq1"></a>
 </h3>
 <div class="callout-content">
-<p>See the <a href="index.html">lesson homepage</a> for detailed information about the software, data, and other prerequisites you will need to work through the examples in this episode.</p>
+<p>See the <a href="index.html">lesson homepage</a> for detailed
+information about the software, data, and other prerequisites you will
+need to work through the examples in this episode.</p>
 </div>
 </div>
 </div>
-<p>This episode will review how to import spatial points stored in <code>.csv</code> (Comma Separated Value) format into R as an <code>sf</code> spatial object. We will also reproject data imported from a shapefile format, export this data as a shapefile, and plot raster and vector data as layers in the same plot.</p>
+<p>This episode will review how to import spatial points stored in
+<code>.csv</code> (Comma Separated Value) format into R as an
+<code>sf</code> spatial object. We will also reproject data imported
+from a shapefile format, export this data as a shapefile, and plot
+raster and vector data as layers in the same plot.</p>
 <section id="spatial-data-in-text-format"><h2 class="section-heading">Spatial Data in Text Format<a class="anchor" aria-label="anchor" href="#spatial-data-in-text-format"></a>
 </h2>
-<hr class="half-width"><p>The <code>HARV_PlotLocations.csv</code> file contains <code>x, y</code> (point) locations for study plot where NEON collects data on <a href="https://www.neonscience.org/data-collection/terrestrial-organismal-sampling" class="external-link">vegetation and other ecological metrics</a>. We would like to:</p>
+<hr class="half-width"><p>The <code>HARV_PlotLocations.csv</code> file contains
+<code>x, y</code> (point) locations for study plot where NEON collects
+data on <a href="https://www.neonscience.org/data-collection/terrestrial-organismal-sampling" class="external-link">vegetation
+and other ecological metrics</a>. We would like to:</p>
 <ul><li>Create a map of these plot locations.</li>
-<li>Export the data in a <code>shapefile</code> format to share with our colleagues. This shapefile can be imported into any GIS software.</li>
-<li>Create a map showing vegetation height with plot locations layered on top.</li>
-</ul><p>Spatial data are sometimes stored in a text file format (<code>.txt</code> or <code>.csv</code>). If the text file has an associated <code>x</code> and <code>y</code> location column, then we can convert it into an <code>sf</code> spatial object. The <code>sf</code> object allows us to store both the <code>x,y</code> values that represent the coordinate location of each point and the associated attribute data - or columns describing each feature in the spatial object.</p>
-<p>We will continue using the <code>sf</code> and <code>raster</code> packages in this episode.</p>
+<li>Export the data in a <code>shapefile</code> format to share with our
+colleagues. This shapefile can be imported into any GIS software.</li>
+<li>Create a map showing vegetation height with plot locations layered
+on top.</li>
+</ul><p>Spatial data are sometimes stored in a text file format
+(<code>.txt</code> or <code>.csv</code>). If the text file has an
+associated <code>x</code> and <code>y</code> location column, then we
+can convert it into an <code>sf</code> spatial object. The
+<code>sf</code> object allows us to store both the <code>x,y</code>
+values that represent the coordinate location of each point and the
+associated attribute data - or columns describing each feature in the
+spatial object.</p>
+<p>We will continue using the <code>sf</code> and <code>raster</code>
+packages in this episode.</p>
 </section><section id="import-.csv"><h2 class="section-heading">Import .csv<a class="anchor" aria-label="anchor" href="#import-.csv"></a>
 </h2>
-<hr class="half-width"><p>To begin let’s import a <code>.csv</code> file that contains plot coordinate <code>x, y</code> locations at the NEON Harvard Forest Field Site (<code>HARV_PlotLocations.csv</code>) and look at the structure of that new object:</p>
+<hr class="half-width"><p>To begin let’s import a <code>.csv</code> file that contains plot
+coordinate <code>x, y</code> locations at the NEON Harvard Forest Field
+Site (<code>HARV_PlotLocations.csv</code>) and look at the structure of
+that new object:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -449,7 +473,11 @@ HTTP status was '404 Not Found'</code></pre>
  $ soilTypeOr: chr  "Inceptisols" "Inceptisols" "Inceptisols" "Histosols" ...
  $ plotdim_m : int  40 40 40 40 40 40 40 40 40 40 ...</code></pre>
 </div>
-<p>We now have a data frame that contains 21 locations (rows) and 16 variables (attributes). Note that all of our character data was imported into R as factor (categorical) data. Next, let’s explore the dataframe to determine whether it contains columns with coordinate values. If we are lucky, our <code>.csv</code> will contain columns labeled:</p>
+<p>We now have a data frame that contains 21 locations (rows) and 16
+variables (attributes). Note that all of our character data was imported
+into R as factor (categorical) data. Next, let’s explore the dataframe
+to determine whether it contains columns with coordinate values. If we
+are lucky, our <code>.csv</code> will contain columns labeled:</p>
 <ul><li>“X” and “Y” OR</li>
 <li>Latitude and Longitude OR</li>
 <li>easting and northing (UTM coordinates)</li>
@@ -470,7 +498,11 @@ HTTP status was '404 Not Found'</code></pre>
 </div>
 </section><section id="identify-xy-location-columns"><h2 class="section-heading">Identify X,Y Location Columns<a class="anchor" aria-label="anchor" href="#identify-xy-location-columns"></a>
 </h2>
-<hr class="half-width"><p>Our column names include several fields that might contain spatial information. The <code>plot_locations_HARV$easting</code> and <code>plot_locations_HARV$northing</code> columns contain coordinate values. We can confirm this by looking at the first six rows of our data.</p>
+<hr class="half-width"><p>Our column names include several fields that might contain spatial
+information. The <code>plot_locations_HARV$easting</code> and
+<code>plot_locations_HARV$northing</code> columns contain coordinate
+values. We can confirm this by looking at the first six rows of our
+data.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -493,11 +525,19 @@ HTTP status was '404 Not Found'</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 4713456 4713415 4713115 4713595 4713846 4713295</code></pre>
 </div>
-<p>We have coordinate values in our data frame. In order to convert our data frame to an <code>sf</code> object, we also need to know the CRS associated with those coordinate values.</p>
-<p>There are several ways to figure out the CRS of spatial data in text format.</p>
-<ol style="list-style-type: decimal"><li>We can check the file metadata in hopes that the CRS was recorded in the data.</li>
-<li>We can explore the file itself to see if CRS information is embedded in the file header or somewhere in the data columns.</li>
-</ol><p>Following the <code>easting</code> and <code>northing</code> columns, there is a <code>geodeticDa</code> and a <code>utmZone</code> column. These appear to contain CRS information (<code>datum</code> and <code>projection</code>). Let’s view those next.</p>
+<p>We have coordinate values in our data frame. In order to convert our
+data frame to an <code>sf</code> object, we also need to know the CRS
+associated with those coordinate values.</p>
+<p>There are several ways to figure out the CRS of spatial data in text
+format.</p>
+<ol style="list-style-type: decimal"><li>We can check the file metadata in hopes that the CRS was recorded in
+the data.</li>
+<li>We can explore the file itself to see if CRS information is embedded
+in the file header or somewhere in the data columns.</li>
+</ol><p>Following the <code>easting</code> and <code>northing</code> columns,
+there is a <code>geodeticDa</code> and a <code>utmZone</code> column.
+These appear to contain CRS information (<code>datum</code> and
+<code>projection</code>). Let’s view those next.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -520,14 +560,28 @@ HTTP status was '404 Not Found'</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "18N" "18N" "18N" "18N" "18N" "18N"</code></pre>
 </div>
-<p>It is not typical to store CRS information in a column. But this particular file contains CRS information this way. The <code>geodeticDa</code> and <code>utmZone</code> columns contain the information that helps us determine the CRS:</p>
+<p>It is not typical to store CRS information in a column. But this
+particular file contains CRS information this way. The
+<code>geodeticDa</code> and <code>utmZone</code> columns contain the
+information that helps us determine the CRS:</p>
 <ul><li>
 <code>geodeticDa</code>: WGS84 – this is geodetic datum WGS84</li>
 <li>
 <code>utmZone</code>: 18</li>
-</ul><p>In <a href="09-vector-when-data-dont-line-up-crs/">When Vector Data Don’t Line Up - Handling Spatial Projection &amp; CRS in R</a> we learned about the components of a <code>proj4</code> string. We have everything we need to assign a CRS to our data frame.</p>
-<p>To create the <code>proj4</code> associated with UTM Zone 18 WGS84 we can look up the projection on the <a href="https://www.spatialreference.org/ref/epsg/wgs-84-utm-zone-18n/" class="external-link">Spatial Reference website</a>, which contains a list of CRS formats for each projection. From here, we can extract the <a href="https://www.spatialreference.org/ref/epsg/wgs-84-utm-zone-18n/proj4/" class="external-link">proj4 string for UTM Zone 18N WGS84</a>.</p>
-<p>However, if we have other data in the UTM Zone 18N projection, it’s much easier to use the <code>st_crs()</code> function to extract the CRS in <code>proj4</code> format from that object and assign it to our new spatial object. We’ve seen this CRS before with our Harvard Forest study site (<code>point_HARV</code>).</p>
+</ul><p>In <a href="09-vector-when-data-dont-line-up-crs/">When Vector Data
+Don’t Line Up - Handling Spatial Projection &amp; CRS in R</a> we
+learned about the components of a <code>proj4</code> string. We have
+everything we need to assign a CRS to our data frame.</p>
+<p>To create the <code>proj4</code> associated with UTM Zone 18 WGS84 we
+can look up the projection on the <a href="https://www.spatialreference.org/ref/epsg/wgs-84-utm-zone-18n/" class="external-link">Spatial
+Reference website</a>, which contains a list of CRS formats for each
+projection. From here, we can extract the <a href="https://www.spatialreference.org/ref/epsg/wgs-84-utm-zone-18n/proj4/" class="external-link">proj4
+string for UTM Zone 18N WGS84</a>.</p>
+<p>However, if we have other data in the UTM Zone 18N projection, it’s
+much easier to use the <code>st_crs()</code> function to extract the CRS
+in <code>proj4</code> format from that object and assign it to our new
+spatial object. We’ve seen this CRS before with our Harvard Forest study
+site (<code>point_HARV</code>).</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -575,8 +629,11 @@ PROJCRS["WGS 84 / UTM zone 18N",
             LENGTHUNIT["metre",1]],
     ID["EPSG",32618]]</code></pre>
 </div>
-<p>The output above shows that the points shapefile is in UTM zone 18N. We can thus use the CRS from that spatial object to convert our non-spatial dataframe into an <code>sf</code> object.</p>
-<p>Next, let’s create a <code>crs</code> object that we can use to define the CRS of our <code>sf</code> object when we create it.</p>
+<p>The output above shows that the points shapefile is in UTM zone 18N.
+We can thus use the CRS from that spatial object to convert our
+non-spatial dataframe into an <code>sf</code> object.</p>
+<p>Next, let’s create a <code>crs</code> object that we can use to
+define the CRS of our <code>sf</code> object when we create it.</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -638,10 +695,14 @@ PROJCRS["WGS 84 / UTM zone 18N",
 </div>
 </section><section id="csv-to-sf-object"><h2 class="section-heading">.csv to sf object<a class="anchor" aria-label="anchor" href="#csv-to-sf-object"></a>
 </h2>
-<hr class="half-width"><p>Next, let’s convert our dataframe into an <code>sf</code> object. To do this, we need to specify:</p>
-<ol style="list-style-type: decimal"><li>The columns containing X (<code>easting</code>) and Y (<code>northing</code>) coordinate values</li>
-<li>The CRS that the column coordinate represent (units are included in the CRS) - stored in our <code>utmCRS</code> object.</li>
-</ol><p>We will use the <code>st_as_sf()</code> function to perform the conversion.</p>
+<hr class="half-width"><p>Next, let’s convert our dataframe into an <code>sf</code> object. To
+do this, we need to specify:</p>
+<ol style="list-style-type: decimal"><li>The columns containing X (<code>easting</code>) and Y
+(<code>northing</code>) coordinate values</li>
+<li>The CRS that the column coordinate represent (units are included in
+the CRS) - stored in our <code>utmCRS</code> object.</li>
+</ol><p>We will use the <code>st_as_sf()</code> function to perform the
+conversion.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -698,7 +759,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
 </div>
 </section><section id="plot-spatial-object"><h2 class="section-heading">Plot Spatial Object<a class="anchor" aria-label="anchor" href="#plot-spatial-object"></a>
 </h2>
-<hr class="half-width"><p>We now have a spatial R object, we can plot our newly created spatial object.</p>
+<hr class="half-width"><p>We now have a spatial R object, we can plot our newly created spatial
+object.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -709,7 +771,12 @@ PROJCRS["WGS 84 / UTM zone 18N",
 </div>
 <figure><img src="fig/10-vector-csv-to-shapefile-in-r-rendered-plot-data-points-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="plot-extent"><h2 class="section-heading">Plot Extent<a class="anchor" aria-label="anchor" href="#plot-extent"></a>
 </h2>
-<hr class="half-width"><p>In <a href="06-vector-open-shapefile-in-r/">Open and Plot Shapefiles in R</a> we learned about spatial object extent. When we plot several spatial layers in R using <code>ggplot</code>, all of the layers of the plot are considered in setting the boundaries of the plot. To show this, let’s plot our <code>aoi_boundary_HARV</code> object with our vegetation plots.</p>
+<hr class="half-width"><p>In <a href="06-vector-open-shapefile-in-r/">Open and Plot Shapefiles
+in R</a> we learned about spatial object extent. When we plot several
+spatial layers in R using <code>ggplot</code>, all of the layers of the
+plot are considered in setting the boundaries of the plot. To show this,
+let’s plot our <code>aoi_boundary_HARV</code> object with our vegetation
+plots.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -719,21 +786,30 @@ PROJCRS["WGS 84 / UTM zone 18N",
 <span>  <span class="fu">geom_sf</span><span class="op">(</span>data <span class="op">=</span> <span class="va">plot_locations_sp_HARV</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"AOI Boundary Plot"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/10-vector-csv-to-shapefile-in-r-rendered-plot-data-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>When we plot the two layers together, <code>ggplot</code> sets the plot boundaries so that they are large enough to include all of the data included in all of the layers. That’s really handy!</p>
+<figure><img src="fig/10-vector-csv-to-shapefile-in-r-rendered-plot-data-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>When we plot the two layers together, <code>ggplot</code> sets the
+plot boundaries so that they are large enough to include all of the data
+included in all of the layers. That’s really handy!</p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge---import-plot-additional-points" class="callout-inner">
-<h3 class="callout-title">Challenge - Import &amp; Plot Additional Points<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge - Import &amp; Plot Additional
+Points<a class="anchor" aria-label="anchor" href="#challenge1"></a>
 </h3>
 <div class="callout-content">
-<p>We want to add two phenology plots to our existing map of vegetation plot locations.</p>
-<p>Import the .csv: <code>HARV/HARV_2NewPhenPlots.csv</code> into R and do the following:</p>
-<ol style="list-style-type: decimal"><li>Find the X and Y coordinate locations. Which value is X and which value is Y?</li>
-<li>These data were collected in a geographic coordinate system (WGS84). Convert the dataframe into an <code>sf</code> object.</li>
-<li>Plot the new points with the plot location points from above. Be sure to add a legend. Use a different symbol for the 2 new points!</li>
-</ol><p>If you have extra time, feel free to add roads and other layers to your map!</p>
+<p>We want to add two phenology plots to our existing map of vegetation
+plot locations.</p>
+<p>Import the .csv: <code>HARV/HARV_2NewPhenPlots.csv</code> into R and
+do the following:</p>
+<ol style="list-style-type: decimal"><li>Find the X and Y coordinate locations. Which value is X and which
+value is Y?</li>
+<li>These data were collected in a geographic coordinate system (WGS84).
+Convert the dataframe into an <code>sf</code> object.</li>
+<li>Plot the new points with the plot location points from above. Be
+sure to add a legend. Use a different symbol for the 2 new points!</li>
+</ol><p>If you have extra time, feel free to add roads and other layers to
+your map!</p>
 </div>
 </div>
 </div>
@@ -746,7 +822,8 @@ PROJCRS["WGS 84 / UTM zone 18N",
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<ol style="list-style-type: decimal"><li>First we will read in the new csv file and look at the data structure.</li>
+<ol style="list-style-type: decimal"><li>First we will read in the new csv file and look at the data
+structure.</li>
 </ol><div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -773,7 +850,10 @@ PROJCRS["WGS 84 / UTM zone 18N",
  $ plotDimens: chr  "200m x 200m" "200m x 200m"
  $ elevation : num  358 346</code></pre>
 </div>
-<ol start="2" style="list-style-type: decimal"><li>The US boundary data we worked with previously is in a geographic WGS84 CRS. We can use that data to establish a CRS for this data. First we will extract the CRS from the <code>country_boundary_US</code> object and confirm that it is WGS84.</li>
+<ol start="2" style="list-style-type: decimal"><li>The US boundary data we worked with previously is in a geographic
+WGS84 CRS. We can use that data to establish a CRS for this data. First
+we will extract the CRS from the <code>country_boundary_US</code> object
+and confirm that it is WGS84.</li>
 </ol><div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -802,7 +882,8 @@ GEOGCRS["WGS 84",
             ANGLEUNIT["degree",0.0174532925199433]],
     ID["EPSG",4326]]</code></pre>
 </div>
-<p>Then we will convert our new data to a spatial dataframe, using the <code>geogCRS</code> object as our CRS.</p>
+<p>Then we will convert our new data to a spatial dataframe, using the
+<code>geogCRS</code> object as our CRS.</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -837,7 +918,9 @@ GEOGCRS["WGS 84",
             ANGLEUNIT["degree",0.0174532925199433]],
     ID["EPSG",4326]]</code></pre>
 </div>
-<p>We will be adding these new data points to the plot we created before. The data for the earlier plot was in UTM. Since we’re using <code>ggplot</code>, it will reproject the data for us.</p>
+<p>We will be adding these new data points to the plot we created
+before. The data for the earlier plot was in UTM. Since we’re using
+<code>ggplot</code>, it will reproject the data for us.</p>
 <ol start="3" style="list-style-type: decimal"><li>Now we can create our plot.</li>
 </ol><div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -854,9 +937,13 @@ GEOGCRS["WGS 84",
 </div>
 </section><section id="export-a-shapefile"><h2 class="section-heading">Export a Shapefile<a class="anchor" aria-label="anchor" href="#export-a-shapefile"></a>
 </h2>
-<hr class="half-width"><p>We can write an R spatial object to a shapefile using the <code>st_write</code> function in <code>sf</code>. To do this we need the following arguments:</p>
-<ul><li>the name of the spatial object (<code>plot_locations_sp_HARV</code>)</li>
-<li>the directory where we want to save our shapefile (to use <code>current = getwd()</code> or you can specify a different path)</li>
+<hr class="half-width"><p>We can write an R spatial object to a shapefile using the
+<code>st_write</code> function in <code>sf</code>. To do this we need
+the following arguments:</p>
+<ul><li>the name of the spatial object
+(<code>plot_locations_sp_HARV</code>)</li>
+<li>the directory where we want to save our shapefile (to use
+<code>current = getwd()</code> or you can specify a different path)</li>
 <li>the name of the new shapefile (<code>PlotLocations_HARV</code>)</li>
 <li>the driver which specifies the file format (ESRI Shapefile)</li>
 </ul><p>We can now export the spatial object as a shapefile.</p>
@@ -875,9 +962,12 @@ GEOGCRS["WGS 84",
 <h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
-<ul><li>Know the projection (if any) of your point data prior to converting to a spatial object.</li>
-<li>Convert a data frame to an <code>sf</code> object using the <code>st_as_sf()</code> function.</li>
-<li>Export an <code>sf</code> object as text using the <code>st_write()</code> function.</li>
+<ul><li>Know the projection (if any) of your point data prior to converting
+to a spatial object.</li>
+<li>Convert a data frame to an <code>sf</code> object using the
+<code>st_as_sf()</code> function.</li>
+<li>Export an <code>sf</code> object as text using the
+<code>st_write()</code> function.</li>
 </ul></div>
 </div>
 </div>

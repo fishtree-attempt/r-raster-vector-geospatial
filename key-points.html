@@ -415,88 +415,121 @@
 <section id="01-raster-structure"><h2 class="section-heading"><a href="01-raster-structure.html">Intro to Raster Data</a></h2>
 <hr class="half-width">
 <ul>
-<li>The GeoTIFF file format includes metadata about the raster data.</li>
-<li>To plot raster data with the <code>ggplot2</code> package, we need to convert it to a dataframe.</li>
+<li>The GeoTIFF file format includes metadata about the raster
+data.</li>
+<li>To plot raster data with the <code>ggplot2</code> package, we need
+to convert it to a dataframe.</li>
 <li>R stores CRS information in the Proj4 format.</li>
 <li>Be careful when dealing with missing or bad data values.</li>
 </ul></section><section id="02-raster-plot"><h2 class="section-heading"><a href="02-raster-plot.html">Plot Raster Data</a></h2>
 <hr class="half-width">
 <ul>
-<li>Continuous data ranges can be grouped into categories using <code>mutate()</code> and <code>cut()</code>.</li>
-<li>Use built-in <code>terrain.colors()</code> or set your preferred color scheme manually.</li>
-<li>Layer rasters on top of one another by using the <code>alpha</code> aesthetic.</li>
+<li>Continuous data ranges can be grouped into categories using
+<code>mutate()</code> and <code>cut()</code>.</li>
+<li>Use built-in <code>terrain.colors()</code> or set your preferred
+color scheme manually.</li>
+<li>Layer rasters on top of one another by using the <code>alpha</code>
+aesthetic.</li>
 </ul></section><section id="03-raster-reproject-in-r"><h2 class="section-heading"><a href="03-raster-reproject-in-r.html">Reproject Raster Data</a></h2>
 <hr class="half-width">
 <ul>
-<li>In order to plot two raster data sets together, they must be in the same CRS.</li>
-<li>Use the <code>projectRaster()</code> function to convert between CRSs.</li>
+<li>In order to plot two raster data sets together, they must be in the
+same CRS.</li>
+<li>Use the <code>projectRaster()</code> function to convert between
+CRSs.</li>
 </ul></section><section id="04-raster-calculations-in-r"><h2 class="section-heading"><a href="04-raster-calculations-in-r.html">Raster Calculations</a></h2>
 <hr class="half-width">
 <ul>
 <li>Rasters can be computed on using mathematical functions.</li>
-<li>The <code>overlay()</code> function provides an efficient way to do raster math.</li>
-<li>The <code>writeRaster()</code> function can be used to write raster data to a file.</li>
+<li>The <code>overlay()</code> function provides an efficient way to do
+raster math.</li>
+<li>The <code>writeRaster()</code> function can be used to write raster
+data to a file.</li>
 </ul></section><section id="05-raster-multi-band-in-r"><h2 class="section-heading"><a href="05-raster-multi-band-in-r.html">Work With Multi-Band Rasters</a></h2>
 <hr class="half-width">
 <ul>
 <li>A single raster file can contain multiple bands or layers.</li>
-<li>Use the <code>stack()</code> function to load all bands in a multi-layer raster file into R.</li>
-<li>Individual bands within a stack can be accessed, analyzed, and visualized using the same functions as single bands.</li>
+<li>Use the <code>stack()</code> function to load all bands in a
+multi-layer raster file into R.</li>
+<li>Individual bands within a stack can be accessed, analyzed, and
+visualized using the same functions as single bands.</li>
 </ul></section><section id="06-vector-open-shapefile-in-r"><h2 class="section-heading"><a href="06-vector-open-shapefile-in-r.html">Open and Plot Shapefiles</a></h2>
 <hr class="half-width">
 <ul>
 <li>Shapefile metadata include geometry type, CRS, and extent.</li>
-<li>Load spatial objects into R with the <code>st_read()</code> function.</li>
-<li>Spatial objects can be plotted directly with <code>ggplot</code> using the <code>geom_sf()</code> function. No need to convert to a dataframe.</li>
+<li>Load spatial objects into R with the <code>st_read()</code>
+function.</li>
+<li>Spatial objects can be plotted directly with <code>ggplot</code>
+using the <code>geom_sf()</code> function. No need to convert to a
+dataframe.</li>
 </ul></section><section id="07-vector-shapefile-attributes-in-r"><h2 class="section-heading"><a href="07-vector-shapefile-attributes-in-r.html">Explore and Plot by Vector Layer Attributes</a></h2>
 <hr class="half-width">
 <ul>
-<li>Spatial objects in <code>sf</code> are similar to standard data frames and can be manipulated using the same functions.</li>
-<li>Almost any feature of a plot can be customized using the various functions and options in the <code>ggplot2</code> package.</li>
+<li>Spatial objects in <code>sf</code> are similar to standard data
+frames and can be manipulated using the same functions.</li>
+<li>Almost any feature of a plot can be customized using the various
+functions and options in the <code>ggplot2</code> package.</li>
 </ul></section><section id="08-vector-plot-shapefiles-custom-legend"><h2 class="section-heading"><a href="08-vector-plot-shapefiles-custom-legend.html">Plot Multiple Shapefiles</a></h2>
 <hr class="half-width">
 <ul>
-<li>Use the <code>+</code> operator to add multiple layers to a ggplot.</li>
+<li>Use the <code>+</code> operator to add multiple layers to a
+ggplot.</li>
 <li>Multi-layered plots can combine raster and vector datasets.</li>
-<li>Use the <code>show.legend</code> argument to set legend symbol types.</li>
-<li>Use the <code>scale_fill_manual()</code> function to set legend colors.</li>
+<li>Use the <code>show.legend</code> argument to set legend symbol
+types.</li>
+<li>Use the <code>scale_fill_manual()</code> function to set legend
+colors.</li>
 </ul></section><section id="09-vector-when-data-dont-line-up-crs"><h2 class="section-heading"><a href="09-vector-when-data-dont-line-up-crs.html">Handling Spatial Projection &amp; CRS</a></h2>
 <hr class="half-width">
 <ul>
 <li>
-<code>ggplot2</code> automatically converts all objects in a plot to the same CRS.</li>
+<code>ggplot2</code> automatically converts all objects in a plot to
+the same CRS.</li>
 <li>Still be aware of the CRS and extent for each object.</li>
 </ul></section><section id="10-vector-csv-to-shapefile-in-r"><h2 class="section-heading"><a href="10-vector-csv-to-shapefile-in-r.html">Convert from .csv to a Shapefile</a></h2>
 <hr class="half-width">
 <ul>
-<li>Know the projection (if any) of your point data prior to converting to a spatial object.</li>
-<li>Convert a data frame to an <code>sf</code> object using the <code>st_as_sf()</code> function.</li>
-<li>Export an <code>sf</code> object as text using the <code>st_write()</code> function.</li>
+<li>Know the projection (if any) of your point data prior to converting
+to a spatial object.</li>
+<li>Convert a data frame to an <code>sf</code> object using the
+<code>st_as_sf()</code> function.</li>
+<li>Export an <code>sf</code> object as text using the
+<code>st_write()</code> function.</li>
 </ul></section><section id="11-vector-raster-integration"><h2 class="section-heading"><a href="11-vector-raster-integration.html">Manipulate Raster Data</a></h2>
 <hr class="half-width">
 <ul>
 <li>Use the <code>crop()</code> function to crop a raster object.</li>
-<li>Use the <code>extract()</code> function to extract pixels from a raster object that fall within a particular extent boundary.</li>
+<li>Use the <code>extract()</code> function to extract pixels from a
+raster object that fall within a particular extent boundary.</li>
 <li>Use the <code>extent()</code> function to define an extent.</li>
 </ul></section><section id="12-time-series-raster"><h2 class="section-heading"><a href="12-time-series-raster.html">Raster Time Series Data</a></h2>
 <hr class="half-width">
 <ul>
-<li>Use the <code>list.files()</code> function to get a list of filenames matching a specific pattern.</li>
-<li>Use the <code>facet_wrap()</code> function to create multi-paneled plots with <code>ggplot2</code>.</li>
-<li>Use the <code>as.Date()</code> function to convert data to date format.</li>
+<li>Use the <code>list.files()</code> function to get a list of
+filenames matching a specific pattern.</li>
+<li>Use the <code>facet_wrap()</code> function to create multi-paneled
+plots with <code>ggplot2</code>.</li>
+<li>Use the <code>as.Date()</code> function to convert data to date
+format.</li>
 </ul></section><section id="13-plot-time-series-rasters-in-r"><h2 class="section-heading"><a href="13-plot-time-series-rasters-in-r.html">Create Publication-quality Graphics</a></h2>
 <hr class="half-width">
 <ul>
-<li>Use the <code>theme_void()</code> function for a clean background to your plot.</li>
-<li>Use the <code>element_text()</code> function to adjust text size, font, and position.</li>
-<li>Use the <code>brewer.pal()</code> function to create a custom color palette.</li>
-<li>Use the <code>gsub()</code> function to do pattern matching and replacement in text.</li>
+<li>Use the <code>theme_void()</code> function for a clean background to
+your plot.</li>
+<li>Use the <code>element_text()</code> function to adjust text size,
+font, and position.</li>
+<li>Use the <code>brewer.pal()</code> function to create a custom color
+palette.</li>
+<li>Use the <code>gsub()</code> function to do pattern matching and
+replacement in text.</li>
 </ul></section><section id="14-extract-ndvi-from-rasters-in-r"><h2 class="section-heading"><a href="14-extract-ndvi-from-rasters-in-r.html">Derive Values from Raster Time Series</a></h2>
 <hr class="half-width">
 <ul>
-<li>Use the <code>cellStats()</code> function to calculate summary statistics for cells in a raster object.</li>
+<li>Use the <code>cellStats()</code> function to calculate summary
+statistics for cells in a raster object.</li>
 <li>The pipe (<code>|</code>) operator means <code>or</code>.</li>
-<li>Use the <code>rbind()</code> function to combine data frames that have the same column names.</li>
+<li>Use the <code>rbind()</code> function to combine data frames that
+have the same column names.</li>
 </ul></section>
 </div>
     </main>

@@ -378,7 +378,8 @@ HTTP status was '404 Not Found'</code></pre>
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How can I view and and plot data for different times of the year?</li>
+<ul><li>How can I view and and plot data for different times of the
+year?</li>
 </ul></div>
 </div>
 </div>
@@ -401,27 +402,49 @@ HTTP status was '404 Not Found'</code></pre>
 <i class="callout-icon" data-feather="check"></i>
 </div>
 <div id="things-youll-need-to-complete-this-episode" class="callout-inner">
-<h3 class="callout-title">Things You’ll Need To Complete This Episode<a class="anchor" aria-label="anchor" href="#prereq1"></a>
+<h3 class="callout-title">Things You’ll Need To Complete This
+Episode<a class="anchor" aria-label="anchor" href="#prereq1"></a>
 </h3>
 <div class="callout-content">
-<p>See the <a href="index.html">lesson homepage</a> for detailed information about the software, data, and other prerequisites you will need to work through the examples in this episode.</p>
+<p>See the <a href="index.html">lesson homepage</a> for detailed
+information about the software, data, and other prerequisites you will
+need to work through the examples in this episode.</p>
 </div>
 </div>
 </div>
-<p>This episode covers how to work with and plot a raster time series, using an R RasterStack object. It also covers practical assessment of data quality in remote sensing derived imagery.</p>
+<p>This episode covers how to work with and plot a raster time series,
+using an R RasterStack object. It also covers practical assessment of
+data quality in remote sensing derived imagery.</p>
 <section id="about-raster-time-series-data"><h2 class="section-heading">About Raster Time Series Data<a class="anchor" aria-label="anchor" href="#about-raster-time-series-data"></a>
 </h2>
-<hr class="half-width"><p>A raster data file can contain one single band or many bands. If the raster data contains imagery data, each band may represent reflectance for a different wavelength (color or type of light) or set of wavelengths - for example red, green and blue. A multi-band raster may two or more bands or layers of data collected at different times for the same extent (region) and of the same resolution. For this episode, we will work with a time series of normalized difference vegetation index (NDVI) and RGB data from the Harvard Forest site. We introduced the concepts of NDVI and RGB data in <a href="https://datacarpentry.org/organization-geospatial/01-intro-raster-data" class="external-link">an earlier lesson</a> and worked with an RGB RasterStack in the <a href="05-raster-multi-band-in-r.html">Work with Multi-band Rasters in R</a> episode.</p>
+<hr class="half-width"><p>A raster data file can contain one single band or many bands. If the
+raster data contains imagery data, each band may represent reflectance
+for a different wavelength (color or type of light) or set of
+wavelengths - for example red, green and blue. A multi-band raster may
+two or more bands or layers of data collected at different times for the
+same extent (region) and of the same resolution. For this episode, we
+will work with a time series of normalized difference vegetation index
+(NDVI) and RGB data from the Harvard Forest site. We introduced the
+concepts of NDVI and RGB data in <a href="https://datacarpentry.org/organization-geospatial/01-intro-raster-data" class="external-link">an
+earlier lesson</a> and worked with an RGB RasterStack in the <a href="05-raster-multi-band-in-r.html">Work with Multi-band Rasters in
+R</a> episode.</p>
 <p>In this episode, we will:</p>
 <ol style="list-style-type: decimal"><li>Import NDVI data in GeoTIFF format.</li>
-<li>Import, explore and plot NDVI data derived for several dates throughout the year.</li>
-<li>View the RGB imagery used to derived the NDVI time series to better understand unusual / outlier values.</li>
+<li>Import, explore and plot NDVI data derived for several dates
+throughout the year.</li>
+<li>View the RGB imagery used to derived the NDVI time series to better
+understand unusual / outlier values.</li>
 </ol></section><section id="rgb-data"><h2 class="section-heading">RGB Data<a class="anchor" aria-label="anchor" href="#rgb-data"></a>
 </h2>
-<hr class="half-width"><p>While the NDVI data is a single band product, the RGB images that contain the red band used to derive NDVI, contain 3 (of the 7) 30m resolution bands available from Landsat data. The RGB directory contains RGB images for each time period that NDVI is available.</p>
+<hr class="half-width"><p>While the NDVI data is a single band product, the RGB images that
+contain the red band used to derive NDVI, contain 3 (of the 7) 30m
+resolution bands available from Landsat data. The RGB directory contains
+RGB images for each time period that NDVI is available.</p>
 <div class="section level3">
 <h3 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a></h3>
-<p>In this episode, we will use the <code>raster</code>, <code>rgdal</code>, <code>reshape</code>, and <code>scales</code> packages. Make sure you have them loaded.</p>
+<p>In this episode, we will use the <code>raster</code>,
+<code>rgdal</code>, <code>reshape</code>, and <code>scales</code>
+packages. Make sure you have them loaded.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -431,7 +454,13 @@ HTTP status was '404 Not Found'</code></pre>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">reshape</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">scales</span><span class="op">)</span></span></code></pre>
 </div>
-<p>To begin, we will create a list of raster files using the <code>list.files()</code> function. This list will be used to generate a RasterStack. We will only add files that have a <code>.tif</code> extension to our list. To do this, we will use the syntax <code>pattern=".tif$"</code>. If we specify <code>full.names = TRUE</code>, the full path for each file will be added to the list.</p>
+<p>To begin, we will create a list of raster files using the
+<code>list.files()</code> function. This list will be used to generate a
+RasterStack. We will only add files that have a <code>.tif</code>
+extension to our list. To do this, we will use the syntax
+<code>pattern=".tif$"</code>. If we specify
+<code>full.names = TRUE</code>, the full path for each file will be
+added to the list.</p>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -440,9 +469,14 @@ HTTP status was '404 Not Found'</code></pre>
 <h3 class="callout-title">Data Tip<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>In the pattern above, the <code>$</code> character represents the end of a line. Using it ensures that our pattern will only match files that end in <code>.tif</code>. This pattern matching uses a language called “regular expressions”, which is beyond the scope of this workshop.</p>
-<ul><li><a href="https://regexone.com/" class="external-link">Regular expressions tutorial</a></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf" class="external-link">Regular expressions cheatsheet</a></li>
+<p>In the pattern above, the <code>$</code> character represents the end
+of a line. Using it ensures that our pattern will only match files that
+end in <code>.tif</code>. This pattern matching uses a language called
+“regular expressions”, which is beyond the scope of this workshop.</p>
+<ul><li><a href="https://regexone.com/" class="external-link">Regular expressions
+tutorial</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf" class="external-link">Regular
+expressions cheatsheet</a></li>
 </ul></div>
 </div>
 </div>
@@ -456,7 +490,8 @@ HTTP status was '404 Not Found'</code></pre>
 <span>                            full.names <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                            pattern <span class="op">=</span> <span class="st">".tif$"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>It’s a good idea to look at the file names that matched our search to make sure they meet our expectations.</p>
+<p>It’s a good idea to look at the file names that matched our search to
+make sure they meet our expectations.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -480,14 +515,21 @@ HTTP status was '404 Not Found'</code></pre>
 [12] "data/NEON-DS-Landsat-NDVI/HARV/2011/NDVI/293_HARV_ndvi_crop.tif"
 [13] "data/NEON-DS-Landsat-NDVI/HARV/2011/NDVI/309_HARV_ndvi_crop.tif"</code></pre>
 </div>
-<p>Now we have a list of all GeoTIFF files in the NDVI directory for Harvard Forest. Next, we will create a RasterStack from this list using the <code>stack()</code> function. We introduced the <code>stack()</code> function in <a href="05-raster-multi-band-in-r.html">an earlier episode</a>.</p>
+<p>Now we have a list of all GeoTIFF files in the NDVI directory for
+Harvard Forest. Next, we will create a RasterStack from this list using
+the <code>stack()</code> function. We introduced the
+<code>stack()</code> function in <a href="05-raster-multi-band-in-r.html">an earlier episode</a>.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NDVI_HARV_stack</span> <span class="op">&lt;-</span> <span class="fu">stack</span><span class="op">(</span><span class="va">all_NDVI_HARV</span><span class="op">)</span></span></code></pre>
 </div>
-<p>We can explore the GeoTIFF tags (the embedded metadata) in a stack using the same syntax that we used on single-band raster objects in R including: <code>crs()</code> (coordinate reference system), <code>extent()</code> and <code>res()</code> (resolution; specifically <code>yres()</code> and <code>xres()</code>).</p>
+<p>We can explore the GeoTIFF tags (the embedded metadata) in a stack
+using the same syntax that we used on single-band raster objects in R
+including: <code>crs()</code> (coordinate reference system),
+<code>extent()</code> and <code>res()</code> (resolution; specifically
+<code>yres()</code> and <code>xres()</code>).</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -539,8 +581,18 @@ PROJCRS["unknown",
             LENGTHUNIT["metre",1,
                 ID["EPSG",9001]]]] </code></pre>
 </div>
-<p>The CRS for our stack is <code>+proj=utm +zone=19 +ellps=WGS84 +units=m +no_defs</code>. The CRS is in UTM Zone 19. If you have completed the previous episodes in this workshop, you may have noticed that the UTM zone for the NEON collected remote sensing data was in Zone 18 rather than Zone 19. Why are the Landsat data in Zone 19?</p>
-<figure><img src="fig/dc-spatial-raster/UTM_zones_18-19.jpg" alt="Source: National Ecological Observatory Network (NEON)." class="figure mx-auto d-block"></figure><p>A Landsat scene is extremely wide - spanning over 170km north to south and 180km east to west. This means that Landsat data often cover multiple UTM zones. When the data are processed, the zone in which the majority of the data cover is the zone which is used for the final CRS. Thus, our field site at Harvard Forest is located in UTM Zone 18, but the Landsat data is in a CRS of UTM Zone 19.</p>
+<p>The CRS for our stack is
+<code>+proj=utm +zone=19 +ellps=WGS84 +units=m +no_defs</code>. The CRS
+is in UTM Zone 19. If you have completed the previous episodes in this
+workshop, you may have noticed that the UTM zone for the NEON collected
+remote sensing data was in Zone 18 rather than Zone 19. Why are the
+Landsat data in Zone 19?</p>
+<figure><img src="fig/dc-spatial-raster/UTM_zones_18-19.jpg" alt="Source: National Ecological Observatory Network (NEON)." class="figure mx-auto d-block"></figure><p>A Landsat scene is extremely wide - spanning over 170km north to
+south and 180km east to west. This means that Landsat data often cover
+multiple UTM zones. When the data are processed, the zone in which the
+majority of the data cover is the zone which is used for the final CRS.
+Thus, our field site at Harvard Forest is located in UTM Zone 18, but
+the Landsat data is in a CRS of UTM Zone 19.</p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -549,7 +601,8 @@ PROJCRS["unknown",
 <h3 class="callout-title">Challenge: Raster Metadata<a class="anchor" aria-label="anchor" href="#challenge1"></a>
 </h3>
 <div class="callout-content">
-<p>Investigate the metadata for our RasterStack and answer the following questions.</p>
+<p>Investigate the metadata for our RasterStack and answer the following
+questions.</p>
 <ol style="list-style-type: decimal"><li>What are the x and y resolution of the data?</li>
 <li>What units are the above resolution in?</li>
 </ol></div>
@@ -562,7 +615,7 @@ PROJCRS["unknown",
   Answers
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -608,7 +661,13 @@ PROJCRS["unknown",
 </div>
 </section><section id="plotting-time-series-data"><h2 class="section-heading">Plotting Time Series Data<a class="anchor" aria-label="anchor" href="#plotting-time-series-data"></a>
 </h2>
-<hr class="half-width"><p>Once we have created our RasterStack, we can visualize our data. We can use the <code>ggplot()</code> command to create a multi-panelled plot showing each band in our RasterStack. First we need to create a data frame object. Because there are multiple bands in our data, we will reshape (or “melt”) the data so that we have a single column with the NDVI observations. We will use the function <code>melt()</code> from the <code>reshape</code> package to do this:</p>
+<hr class="half-width"><p>Once we have created our RasterStack, we can visualize our data. We
+can use the <code>ggplot()</code> command to create a multi-panelled
+plot showing each band in our RasterStack. First we need to create a
+data frame object. Because there are multiple bands in our data, we will
+reshape (or “melt”) the data so that we have a single column with the
+NDVI observations. We will use the function <code>melt()</code> from the
+<code>reshape</code> package to do this:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -616,7 +675,10 @@ PROJCRS["unknown",
 <code class="sourceCode R"><span><span class="va">NDVI_HARV_stack_df</span> <span class="op">&lt;-</span> <span class="fu">as.data.frame</span><span class="op">(</span><span class="va">NDVI_HARV_stack</span>, xy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">melt</span><span class="op">(</span>id.vars <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">'x'</span>,<span class="st">'y'</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Now we can plot our data using <code>ggplot()</code>. We want to create a separate panel for each time point in our time series, so we will use the <code>facet_wrap()</code> function to create a multi-paneled plot:</p>
+<p>Now we can plot our data using <code>ggplot()</code>. We want to
+create a separate panel for each time point in our time series, so we
+will use the <code>facet_wrap()</code> function to create a
+multi-paneled plot:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -625,18 +687,26 @@ PROJCRS["unknown",
 <span>  <span class="fu">geom_raster</span><span class="op">(</span>data <span class="op">=</span> <span class="va">NDVI_HARV_stack_df</span> , <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, fill <span class="op">=</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">variable</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-time-series-raster-rendered-ndvi-wrap-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Look at the range of NDVI values observed in the plot above. We know that the accepted values for NDVI range from 0-1. Why does our data range from 0 - 10,000?</p>
+<figure><img src="fig/12-time-series-raster-rendered-ndvi-wrap-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Look at the range of NDVI values observed in the plot above. We know
+that the accepted values for NDVI range from 0-1. Why does our data
+range from 0 - 10,000?</p>
 </section><section id="scale-factors"><h2 class="section-heading">Scale Factors<a class="anchor" aria-label="anchor" href="#scale-factors"></a>
 </h2>
-<hr class="half-width"><p>The metadata for this NDVI data specifies a scale factor: 10,000. A scale factor is sometimes used to maintain smaller file sizes by removing decimal places. Storing data in integer format keeps files sizes smaller.</p>
-<p>Let’s apply the scale factor before we go any further. Conveniently, we can quickly apply this factor using raster math on the entire stack as follows:</p>
+<hr class="half-width"><p>The metadata for this NDVI data specifies a scale factor: 10,000. A
+scale factor is sometimes used to maintain smaller file sizes by
+removing decimal places. Storing data in integer format keeps files
+sizes smaller.</p>
+<p>Let’s apply the scale factor before we go any further. Conveniently,
+we can quickly apply this factor using raster math on the entire stack
+as follows:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">NDVI_HARV_stack</span> <span class="op">&lt;-</span> <span class="va">NDVI_HARV_stack</span><span class="op">/</span><span class="fl">10000</span></span></code></pre>
 </div>
-<p>After applying our scale factor, we can recreate our plot using the same code we used above.</p>
+<p>After applying our scale factor, we can recreate our plot using the
+same code we used above.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -650,12 +720,25 @@ PROJCRS["unknown",
 </div>
 <figure><img src="fig/12-time-series-raster-rendered-ndvi-stack-wrap-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="take-a-closer-look-at-our-data"><h2 class="section-heading">Take a Closer Look at Our Data<a class="anchor" aria-label="anchor" href="#take-a-closer-look-at-our-data"></a>
 </h2>
-<hr class="half-width"><p>Let’s take a closer look at the plots of our data. Massachusetts, where the NEON Harvard Forest Field Site is located, has a fairly consistent fall, winter, spring, and summer season where vegetation turns green in the spring, continues to grow throughout the summer, and begins to change colors and senesce in the fall through winter. Do you notice anything that seems unusual about the patterns of greening and browning observed in the plots above?</p>
-<p>Hint: the number after the “X” in each tile title is the Julian day which in this case represents the number of days into each year. If you are unfamiliar with Julian day, check out the NEON Data Skills <a href="https://www.neonscience.org/julian-day-conversion-r" class="external-link">Converting to Julian Day</a> tutorial.</p>
+<hr class="half-width"><p>Let’s take a closer look at the plots of our data. Massachusetts,
+where the NEON Harvard Forest Field Site is located, has a fairly
+consistent fall, winter, spring, and summer season where vegetation
+turns green in the spring, continues to grow throughout the summer, and
+begins to change colors and senesce in the fall through winter. Do you
+notice anything that seems unusual about the patterns of greening and
+browning observed in the plots above?</p>
+<p>Hint: the number after the “X” in each tile title is the Julian day
+which in this case represents the number of days into each year. If you
+are unfamiliar with Julian day, check out the NEON Data Skills <a href="https://www.neonscience.org/julian-day-conversion-r" class="external-link">Converting to
+Julian Day</a> tutorial.</p>
 </section><section id="view-distribution-of-raster-values"><h2 class="section-heading">View Distribution of Raster Values<a class="anchor" aria-label="anchor" href="#view-distribution-of-raster-values"></a>
 </h2>
-<hr class="half-width"><p>In the above exercise, we viewed plots of our NDVI time series and noticed a few images seem to be unusually light. However this was only a visual representation of potential issues in our data. What is another way we can look at these data that is quantitative?</p>
-<p>Next we will use histograms to explore the distribution of NDVI values stored in each raster.</p>
+<hr class="half-width"><p>In the above exercise, we viewed plots of our NDVI time series and
+noticed a few images seem to be unusually light. However this was only a
+visual representation of potential issues in our data. What is another
+way we can look at these data that is quantitative?</p>
+<p>Next we will use histograms to explore the distribution of NDVI
+values stored in each raster.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -669,11 +752,21 @@ PROJCRS["unknown",
 </h3>
 <pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
-<figure><img src="fig/12-time-series-raster-rendered-view-stack-histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It seems like things get green in the spring and summer like we expect, but the data at Julian days 277 and 293 are unusual. It appears as if the vegetation got green in the spring, but then died back only to get green again towards the end of the year. Is this right?</p>
+<figure><img src="fig/12-time-series-raster-rendered-view-stack-histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It seems like things get green in the spring and summer like we
+expect, but the data at Julian days 277 and 293 are unusual. It appears
+as if the vegetation got green in the spring, but then died back only to
+get green again towards the end of the year. Is this right?</p>
 <div class="section level3">
 <h3 id="explore-unusual-data-patterns">Explore Unusual Data Patterns<a class="anchor" aria-label="anchor" href="#explore-unusual-data-patterns"></a></h3>
-<p>The NDVI data that we are using comes from 2011, perhaps a strong freeze around Julian day 277 could cause a vegetation to senesce early, however in the eastern United States, it seems unusual that it would proceed to green up again shortly thereafter.</p>
-<p>Let’s next view some temperature data for our field site to see whether there were some unusual fluctuations that may explain this pattern of greening and browning seen in the NDVI data. First we will read in the temperature data and preview the structure of that dataframe:</p>
+<p>The NDVI data that we are using comes from 2011, perhaps a strong
+freeze around Julian day 277 could cause a vegetation to senesce early,
+however in the eastern United States, it seems unusual that it would
+proceed to green up again shortly thereafter.</p>
+<p>Let’s next view some temperature data for our field site to see
+whether there were some unusual fluctuations that may explain this
+pattern of greening and browning seen in the NDVI data. First we will
+read in the temperature data and preview the structure of that
+dataframe:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -734,7 +827,11 @@ PROJCRS["unknown",
  $ s10tmin  : num  NA NA NA NA NA NA NA NA NA NA ...
  $ f.s10tmin: chr  "M" "M" "M" "M" ...</code></pre>
 </div>
-<p>The <code>date</code> column is currently coded as a factor. We want to be able to treat it as a date, so we will use the <code>as.Date()</code> function to convert it. We need to tell R what format the data is in. Our dates are YYY-MM-DD, which is represented by R as <code>%Y-%m-%d</code>.</p>
+<p>The <code>date</code> column is currently coded as a factor. We want
+to be able to treat it as a date, so we will use the
+<code>as.Date()</code> function to convert it. We need to tell R what
+format the data is in. Our dates are YYY-MM-DD, which is represented by
+R as <code>%Y-%m-%d</code>.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -750,7 +847,8 @@ PROJCRS["unknown",
 <span>                            <span class="va">date</span> <span class="op">&gt;=</span> <span class="fu">as.Date</span><span class="op">(</span><span class="st">'2011-01-01'</span><span class="op">)</span> <span class="op">&amp;</span></span>
 <span>                            <span class="va">date</span> <span class="op">&lt;=</span> <span class="fu">as.Date</span><span class="op">(</span><span class="st">'2011-12-31'</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Now we can plot the air temperature (the <code>airt</code> column) by Julian day (the <code>jd</code> column):</p>
+<p>Now we can plot the air temperature (the <code>airt</code> column) by
+Julian day (the <code>jd</code> column):</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -762,7 +860,11 @@ PROJCRS["unknown",
 <span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Julian Day 2011"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Mean Air Temperature (C)"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/12-time-series-raster-rendered-air-temperature-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>There are no significant peaks or dips in the temperature during the late summer or early fall time period that might account for patterns seen in the NDVI data. Let’s have a look at the source Landsat imagery that was partially used used to derive our NDVI rasters to try to understand what appear to be outlier NDVI values.</p>
+<figure><img src="fig/12-time-series-raster-rendered-air-temperature-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>There are no significant peaks or dips in the temperature during the
+late summer or early fall time period that might account for patterns
+seen in the NDVI data. Let’s have a look at the source Landsat imagery
+that was partially used used to derive our NDVI rasters to try to
+understand what appear to be outlier NDVI values.</p>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -801,7 +903,10 @@ Caused by error in `check_aesthetics()`:
 <h3 class="callout-title">Challenge: Examine RGB Raster Files<a class="anchor" aria-label="anchor" href="#challenge2"></a>
 </h3>
 <div class="callout-content">
-<p>Plot the RGB images for the Julian days 277 and 293. Compare those with the RGB plots for Julian days 133 and 197 (shown above). Does the RGB imagery from these two days explain the low NDVI values observed on these days?</p>
+<p>Plot the RGB images for the Julian days 277 and 293. Compare those
+with the RGB plots for Julian days 133 and 197 (shown above). Does the
+RGB imagery from these two days explain the low NDVI values observed on
+these days?</p>
 </div>
 </div>
 </div>
@@ -812,9 +917,10 @@ Caused by error in `check_aesthetics()`:
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<p>First we need to load in the RGB data for Julian day 277 and look at its metadata.</p>
+<p>First we need to load in the RGB data for Julian day 277 and look at
+its metadata.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -834,7 +940,9 @@ names      : X277_HARV_landRGB_1, X277_HARV_landRGB_2, X277_HARV_landRGB_3
 min values :                  26,                  29,                  79 
 max values :                 255,                 255,                 255 </code></pre>
 </div>
-<p>The RGB data has a max value of 255, but we need our color intensity to be between 0 and 1, so we will divide our RasterStack object by 255.</p>
+<p>The RGB data has a max value of 255, but we need our color intensity
+to be between 0 and 1, so we will divide our RasterStack object by
+255.</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -913,7 +1021,13 @@ Caused by error in `check_aesthetics()`:
 ! Aesthetics must be either length 1 or the same as the data (453792)
 ✖ Fix the following mappings: `fill`</code></pre>
 </div>
-<p>This example highlights the importance of exploring the source of a derived data product. In this case, the NDVI data product was created using Landsat imagery - specifically the red and near-infrared bands. When we look at the RGB collected at Julian days 277 and 293 we see that most of the image is filled with clouds. The very low NDVI values resulted from cloud cover — a common challenge that we encounter when working with satellite remote sensing imagery.</p>
+<p>This example highlights the importance of exploring the source of a
+derived data product. In this case, the NDVI data product was created
+using Landsat imagery - specifically the red and near-infrared bands.
+When we look at the RGB collected at Julian days 277 and 293 we see that
+most of the image is filled with clouds. The very low NDVI values
+resulted from cloud cover — a common challenge that we encounter when
+working with satellite remote sensing imagery.</p>
 </div>
 </div>
 </div>
@@ -926,9 +1040,12 @@ Caused by error in `check_aesthetics()`:
 <h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
-<ul><li>Use the <code>list.files()</code> function to get a list of filenames matching a specific pattern.</li>
-<li>Use the <code>facet_wrap()</code> function to create multi-paneled plots with <code>ggplot2</code>.</li>
-<li>Use the <code>as.Date()</code> function to convert data to date format.</li>
+<ul><li>Use the <code>list.files()</code> function to get a list of
+filenames matching a specific pattern.</li>
+<li>Use the <code>facet_wrap()</code> function to create multi-paneled
+plots with <code>ggplot2</code>.</li>
+<li>Use the <code>as.Date()</code> function to convert data to date
+format.</li>
 </ul></div>
 </div>
 </div>

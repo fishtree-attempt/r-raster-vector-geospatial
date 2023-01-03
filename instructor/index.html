@@ -332,12 +332,21 @@
       
 
 <blockquote>
-<p><strong>ATTENTION</strong> This is an experimental test of <a href="https://carpentries.github.io/workbench" class="external-link">The Carpentries Workbench</a> lesson infrastructure. It was automatically converted from the source lesson via <a href="https://github.com/carpentries/lesson-transition/" class="external-link">the lesson transition script</a>.</p>
+<p><strong>ATTENTION</strong> This is an experimental test of <a href="https://carpentries.github.io/workbench" class="external-link">The Carpentries
+Workbench</a> lesson infrastructure. It was automatically converted from
+the source lesson via <a href="https://github.com/carpentries/lesson-transition/" class="external-link">the lesson
+transition script</a>.</p>
 <p>If anything seems off, please contact Zhian Kamvar <a href="mailto:zkamvar@carpentries.org">zkamvar@carpentries.org</a></p>
 </blockquote>
-<p><strong>Lesson Authors:</strong> Leah A. Wasser, Megan A. Jones, Zack Brym, Kristina Riemer, Jason Williams, Jeff Hollister, Mike Smorul, Jemma Stachelek</p>
-<p><strong>Lesson Maintainers:</strong> {{ page.maintainers | join: ‘,’ }}</p>
-<p>The episodes in this lesson cover how to open, work with, and plot vector and raster-format spatial data in R. Additional topics include working with spatial metadata (extent and coordinate reference systems), reprojecting spatial data, and working with raster time series data.</p>
+<p><strong>Lesson Authors:</strong> Leah A. Wasser, Megan A. Jones, Zack
+Brym, Kristina Riemer, Jason Williams, Jeff Hollister, Mike Smorul,
+Jemma Stachelek</p>
+<p><strong>Lesson Maintainers:</strong> {{ page.maintainers | join: ‘,’
+}}</p>
+<p>The episodes in this lesson cover how to open, work with, and plot
+vector and raster-format spatial data in R. Additional topics include
+working with spatial metadata (extent and coordinate reference systems),
+reprojecting spatial data, and working with raster time series data.</p>
 <div id="prereq1" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
@@ -346,22 +355,37 @@
 <h3 class="callout-title">Prerequisites<a class="anchor" aria-label="anchor" href="#prereq1"></a>
 </h3>
 <div class="callout-content">
-<p>Data Carpentry’s teaching is hands-on, so participants are encouraged to use their own computers to ensure the proper setup of tools for an efficient workflow. To most effectively use these materials, please make sure to download the data and install everything before working through this lesson.</p>
+<p>Data Carpentry’s teaching is hands-on, so participants are encouraged
+to use their own computers to ensure the proper setup of tools for an
+efficient workflow. To most effectively use these materials, please make
+sure to download the data and install everything before working through
+this lesson.</p>
 <div class="section level3">
 <h3 id="r-skill-level">R Skill Level<a class="anchor" aria-label="anchor" href="#r-skill-level"></a></h3>
-<p>This lesson assumes you have some knowledge of <code>R</code>. If you’ve never used <code>R</code> before, or need a refresher, start with our <a href="http://www.datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to R for Geospatial Data</a> lesson.</p>
+<p>This lesson assumes you have some knowledge of <code>R</code>. If
+you’ve never used <code>R</code> before, or need a refresher, start with
+our <a href="http://www.datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to
+R for Geospatial Data</a> lesson.</p>
 </div>
 <div class="section level3">
 <h3 id="geospatial-skill-level">Geospatial Skill Level<a class="anchor" aria-label="anchor" href="#geospatial-skill-level"></a></h3>
-<p>This lesson assumes you have some knowledge of geospatial data types and common file formats. If you have never worked with geospatial data before, or need a refresher, start with our <a href="http://www.datacarpentry.org/organization-geospatial/" class="external-link">Introduction to Geospatial Concepts</a> lesson.</p>
+<p>This lesson assumes you have some knowledge of geospatial data types
+and common file formats. If you have never worked with geospatial data
+before, or need a refresher, start with our <a href="http://www.datacarpentry.org/organization-geospatial/" class="external-link">Introduction
+to Geospatial Concepts</a> lesson.</p>
 </div>
 <div class="section level3">
 <h3 id="install-software-and-download-data">Install Software and Download Data<a class="anchor" aria-label="anchor" href="#install-software-and-download-data"></a></h3>
-<p>For installation instructions and to download the data used in this lesson, see the <a href="http://www.datacarpentry.org/geospatial-workshop/setup.html" class="external-link">Geospatial Workshop Overview</a>.</p>
+<p>For installation instructions and to download the data used in this
+lesson, see the <a href="http://www.datacarpentry.org/geospatial-workshop/setup.html" class="external-link">Geospatial
+Workshop Overview</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="setup-rstudio-project">Setup RStudio Project<a class="anchor" aria-label="anchor" href="#setup-rstudio-project"></a></h3>
-<p>Make sure you have set up a RStudio project for this lesson, as described in the <a href="%7B%7B%20site.baseurl%20%7D%7D/setup.html" target="_blank">setup instructions</a> and that your working directory is correctly set.</p>
+<p>Make sure you have set up a RStudio project for this lesson, as
+described in the
+<a href="%7B%7B%20site.baseurl%20%7D%7D/setup.html" target="_blank">setup
+instructions</a> and that your working directory is correctly set.</p>
 </div>
 </div>
 </div>
@@ -376,7 +400,8 @@
  1. <a href="01-raster-structure.html">Intro to Raster Data</a>
 </td>
 <td>
-What is a raster dataset?<br>How do I work with and plot raster data in R?<br>How can I handle missing or bad data values for a raster?
+What is a raster dataset?<br>How do I work with and plot raster data in
+R?<br>How can I handle missing or bad data values for a raster?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>00h 50m
@@ -385,7 +410,9 @@ What is a raster dataset?<br>How do I work with and plot raster data in R?<br>Ho
  2. <a href="02-raster-plot.html">Plot Raster Data</a>
 </td>
 <td>
-How can I create categorized or customized maps of raster data?<br>How can I customize the color scheme of a raster image?<br>How can I layer raster data in a single image?
+How can I create categorized or customized maps of raster data?<br>How
+can I customize the color scheme of a raster image?<br>How can I layer
+raster data in a single image?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>02h 00m
@@ -403,13 +430,15 @@ How do I work with raster data sets that are in different projections?
  4. <a href="04-raster-calculations-in-r.html">Raster Calculations</a>
 </td>
 <td>
-How do I subtract one raster from another and extract pixel values for defined locations?
+How do I subtract one raster from another and extract pixel values for
+defined locations?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>04h 00m
 </td>
 <td>
- 5. <a href="05-raster-multi-band-in-r.html">Work With Multi-Band Rasters</a>
+ 5. <a href="05-raster-multi-band-in-r.html">Work With Multi-Band
+Rasters</a>
 </td>
 <td>
 How can I visualize individual and multiple bands in a raster object?
@@ -418,16 +447,19 @@ How can I visualize individual and multiple bands in a raster object?
 <span class="visually-hidden">Duration: </span>05h 00m
 </td>
 <td>
- 6. <a href="06-vector-open-shapefile-in-r.html">Open and Plot Shapefiles</a>
+ 6. <a href="06-vector-open-shapefile-in-r.html">Open and Plot
+Shapefiles</a>
 </td>
 <td>
-How can I distinguish between and visualize point, line and polygon vector data?
+How can I distinguish between and visualize point, line and polygon
+vector data?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>05h 30m
 </td>
 <td>
- 7. <a href="07-vector-shapefile-attributes-in-r.html">Explore and Plot by Vector Layer Attributes</a>
+ 7. <a href="07-vector-shapefile-attributes-in-r.html">Explore and Plot
+by Vector Layer Attributes</a>
 </td>
 <td>
 How can I compute on the attributes of a spatial object?
@@ -436,16 +468,19 @@ How can I compute on the attributes of a spatial object?
 <span class="visually-hidden">Duration: </span>06h 30m
 </td>
 <td>
- 8. <a href="08-vector-plot-shapefiles-custom-legend.html">Plot Multiple Shapefiles</a>
+ 8. <a href="08-vector-plot-shapefiles-custom-legend.html">Plot Multiple
+Shapefiles</a>
 </td>
 <td>
-How can I create map compositions with custom legends using ggplot?<br>How can I plot raster and vector data together?
+How can I create map compositions with custom legends using
+ggplot?<br>How can I plot raster and vector data together?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>07h 30m
 </td>
 <td>
- 9. <a href="09-vector-when-data-dont-line-up-crs.html">Handling Spatial Projection &amp; CRS</a>
+ 9. <a href="09-vector-when-data-dont-line-up-crs.html">Handling Spatial
+Projection &amp; CRS</a>
 </td>
 <td>
 What do I do when vector data don’t line up?
@@ -454,7 +489,8 @@ What do I do when vector data don’t line up?
 <span class="visually-hidden">Duration: </span>08h 30m
 </td>
 <td>
-10. <a href="10-vector-csv-to-shapefile-in-r.html">Convert from .csv to a Shapefile</a>
+10. <a href="10-vector-csv-to-shapefile-in-r.html">Convert from .csv to
+a Shapefile</a>
 </td>
 <td>
 How can I import CSV files as shapefiles in R?
@@ -463,10 +499,12 @@ How can I import CSV files as shapefiles in R?
 <span class="visually-hidden">Duration: </span>09h 30m
 </td>
 <td>
-11. <a href="11-vector-raster-integration.html">Manipulate Raster Data</a>
+11. <a href="11-vector-raster-integration.html">Manipulate Raster
+Data</a>
 </td>
 <td>
-How can I crop raster objects to vector objects, and extract the summary of raster pixels?
+How can I crop raster objects to vector objects, and extract the summary
+of raster pixels?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>10h 30m
@@ -481,16 +519,19 @@ How can I view and and plot data for different times of the year?
 <span class="visually-hidden">Duration: </span>11h 30m
 </td>
 <td>
-13. <a href="13-plot-time-series-rasters-in-r.html">Create Publication-quality Graphics</a>
+13. <a href="13-plot-time-series-rasters-in-r.html">Create
+Publication-quality Graphics</a>
 </td>
 <td>
-How can I create a publication-quality graphic and customize plot parameters?
+How can I create a publication-quality graphic and customize plot
+parameters?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>12h 30m
 </td>
 <td>
-14. <a href="14-extract-ndvi-from-rasters-in-r.html">Derive Values from Raster Time Series</a>
+14. <a href="14-extract-ndvi-from-rasters-in-r.html">Derive Values from
+Raster Time Series</a>
 </td>
 <td>
 How can I calculate, extract, and export summarized raster pixel data?
@@ -506,7 +547,11 @@ Finish
 </tr></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>This lesson is designed to be taught in conjunction with other lessons in the <a href="http://www.datacarpentry.org/geospatial-workshop/" class="external-link">Data Carpentry Geospatial workshop</a>. For information about required software, and to access the datasets used in this lesson, see the <a href="https://datacarpentry.org/geospatial-workshop/setup.html" class="external-link">setup instructions</a> on the workshop homepage.</p>
+      </section><section id="setup"><p>This lesson is designed to be taught in conjunction with other
+lessons in the <a href="http://www.datacarpentry.org/geospatial-workshop/" class="external-link">Data Carpentry
+Geospatial workshop</a>. For information about required software, and to
+access the datasets used in this lesson, see the <a href="https://datacarpentry.org/geospatial-workshop/setup.html" class="external-link">setup
+instructions</a> on the workshop homepage.</p>
 
       </section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="../instructor/01-raster-structure.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>

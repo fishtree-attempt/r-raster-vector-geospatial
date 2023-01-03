@@ -378,7 +378,8 @@ HTTP status was '404 Not Found'</code></pre>
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do I subtract one raster from another and extract pixel values for defined locations?</li>
+<ul><li>How do I subtract one raster from another and extract pixel values
+for defined locations?</li>
 </ul></div>
 </div>
 </div>
@@ -387,7 +388,8 @@ HTTP status was '404 Not Found'</code></pre>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul><li>Perform a subtraction between two rasters using raster math.</li>
-<li>Perform a more efficient subtraction between two rasters using the raster <code>overlay()</code> function.</li>
+<li>Perform a more efficient subtraction between two rasters using the
+raster <code>overlay()</code> function.</li>
 <li>Export raster data as a GeoTIFF file.</li>
 </ul></div>
 </div>
@@ -399,17 +401,32 @@ HTTP status was '404 Not Found'</code></pre>
 <i class="callout-icon" data-feather="check"></i>
 </div>
 <div id="things-youll-need-to-complete-this-episode" class="callout-inner">
-<h3 class="callout-title">Things You’ll Need To Complete This Episode<a class="anchor" aria-label="anchor" href="#prereq1"></a>
+<h3 class="callout-title">Things You’ll Need To Complete This
+Episode<a class="anchor" aria-label="anchor" href="#prereq1"></a>
 </h3>
 <div class="callout-content">
-<p>See the <a href="index.html">lesson homepage</a> for detailed information about the software, data, and other prerequisites you will need to work through the examples in this episode.</p>
+<p>See the <a href="index.html">lesson homepage</a> for detailed
+information about the software, data, and other prerequisites you will
+need to work through the examples in this episode.</p>
 </div>
 </div>
 </div>
-<p>We often want to combine values of and perform calculations on rasters to create a new output raster. This episode covers how to subtract one raster from another using basic raster math and the <code>overlay()</code> function. It also covers how to extract pixel values from a set of locations - for example a buffer region around plot locations at a field site.</p>
+<p>We often want to combine values of and perform calculations on
+rasters to create a new output raster. This episode covers how to
+subtract one raster from another using basic raster math and the
+<code>overlay()</code> function. It also covers how to extract pixel
+values from a set of locations - for example a buffer region around plot
+locations at a field site.</p>
 <section id="raster-calculations-in-r"><h2 class="section-heading">Raster Calculations in R<a class="anchor" aria-label="anchor" href="#raster-calculations-in-r"></a>
 </h2>
-<hr class="half-width"><p>We often want to perform calculations on two or more rasters to create a new output raster. For example, if we are interested in mapping the heights of trees across an entire field site, we might want to calculate the difference between the Digital Surface Model (DSM, tops of trees) and the Digital Terrain Model (DTM, ground level). The resulting dataset is referred to as a Canopy Height Model (CHM) and represents the actual height of trees, buildings, etc. with the influence of ground elevation removed.</p>
+<hr class="half-width"><p>We often want to perform calculations on two or more rasters to
+create a new output raster. For example, if we are interested in mapping
+the heights of trees across an entire field site, we might want to
+calculate the difference between the Digital Surface Model (DSM, tops of
+trees) and the Digital Terrain Model (DTM, ground level). The resulting
+dataset is referred to as a Canopy Height Model (CHM) and represents the
+actual height of trees, buildings, etc. with the influence of ground
+elevation removed.</p>
 <figure><img src="../fig/dc-spatial-raster/lidarTree-height.png" alt="Source: National Ecological Observatory Network (NEON)" class="figure mx-auto d-block"></figure><div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -418,13 +435,17 @@ HTTP status was '404 Not Found'</code></pre>
 <h3 class="callout-title">More Resources<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<ul><li>Check out more on LiDAR CHM, DTM and DSM in this NEON Data Skills overview tutorial: <a href="https://www.neonscience.org/chm-dsm-dtm-gridded-lidar-data" class="external-link">What is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data</a>.</li>
+<ul><li>Check out more on LiDAR CHM, DTM and DSM in this NEON Data Skills
+overview tutorial: <a href="https://www.neonscience.org/chm-dsm-dtm-gridded-lidar-data" class="external-link">What
+is a CHM, DSM and DTM? About Gridded, Raster LiDAR Data</a>.</li>
 </ul></div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="load-the-data">Load the Data<a class="anchor" aria-label="anchor" href="#load-the-data"></a></h3>
-<p>For this episode, we will use the DTM and DSM from the NEON Harvard Forest Field site and San Joaquin Experimental Range, which we already have loaded from previous episodes.</p>
+<p>For this episode, we will use the DTM and DSM from the NEON Harvard
+Forest Field site and San Joaquin Experimental Range, which we already
+have loaded from previous episodes.</p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -433,7 +454,10 @@ HTTP status was '404 Not Found'</code></pre>
 <h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#challenge1"></a>
 </h3>
 <div class="callout-content">
-<p>Use the <code>GDALinfo()</code> function to view information about the DTM and DSM data files. Do the two rasters have the same or different CRSs and resolutions? Do they both have defined minimum and maximum values?</p>
+<p>Use the <code>GDALinfo()</code> function to view information about
+the DTM and DSM data files. Do the two rasters have the same or
+different CRSs and resolutions? Do they both have defined minimum and
+maximum values?</p>
 </div>
 </div>
 </div>
@@ -444,7 +468,7 @@ HTTP status was '404 Not Found'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -542,7 +566,9 @@ AREA_OR_POINT=Area </code></pre>
 </div>
 </div>
 </div>
-<p>We’ve already loaded and worked with these two data files in earlier episodes. Let’s plot them each once more to remind ourselves what this data looks like. First we’ll plot the DTM elevation data:</p>
+<p>We’ve already loaded and worked with these two data files in earlier
+episodes. Let’s plot them each once more to remind ourselves what this
+data looks like. First we’ll plot the DTM elevation data:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -567,14 +593,20 @@ AREA_OR_POINT=Area </code></pre>
 <figure><img src="../fig/04-raster-calculations-in-r-rendered-harv-dsm-plot-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </section><section id="two-ways-to-perform-raster-calculations"><h2 class="section-heading">Two Ways to Perform Raster Calculations<a class="anchor" aria-label="anchor" href="#two-ways-to-perform-raster-calculations"></a>
 </h2>
-<hr class="half-width"><p>We can calculate the difference between two rasters in two different ways:</p>
+<hr class="half-width"><p>We can calculate the difference between two rasters in two different
+ways:</p>
 <ul><li>by directly subtracting the two rasters in R using raster math</li>
-</ul><p>or for more efficient processing - particularly if our rasters are large and/or the calculations we are performing are complex:</p>
+</ul><p>or for more efficient processing - particularly if our rasters are
+large and/or the calculations we are performing are complex:</p>
 <ul><li>using the <code>overlay()</code> function.</li>
 </ul></section><section id="raster-math-canopy-height-models"><h2 class="section-heading">Raster Math &amp; Canopy Height Models<a class="anchor" aria-label="anchor" href="#raster-math-canopy-height-models"></a>
 </h2>
-<hr class="half-width"><p>We can perform raster calculations by subtracting (or adding, multiplying, etc) two rasters. In the geospatial world, we call this “raster math”.</p>
-<p>Let’s subtract the DTM from the DSM to create a Canopy Height Model. After subtracting, let’s create a dataframe so we can plot with <code>ggplot</code>.</p>
+<hr class="half-width"><p>We can perform raster calculations by subtracting (or adding,
+multiplying, etc) two rasters. In the geospatial world, we call this
+“raster math”.</p>
+<p>Let’s subtract the DTM from the DSM to create a Canopy Height Model.
+After subtracting, let’s create a dataframe so we can plot with
+<code>ggplot</code>.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -594,7 +626,8 @@ AREA_OR_POINT=Area </code></pre>
 <span>   <span class="fu">scale_fill_gradientn</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Canopy Height"</span>, colors <span class="op">=</span> <span class="fu">terrain.colors</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>   <span class="fu">coord_quickmap</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/04-raster-calculations-in-r-rendered-harv-chm-plot-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Let’s have a look at the distribution of values in our newly created Canopy Height Model (CHM).</p>
+<figure><img src="../fig/04-raster-calculations-in-r-rendered-harv-chm-plot-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Let’s have a look at the distribution of values in our newly created
+Canopy Height Model (CHM).</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -612,7 +645,8 @@ AREA_OR_POINT=Area </code></pre>
 </h3>
 <pre class="warning" tabindex="0"><code>Warning: Removed 1 rows containing non-finite values (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="../fig/04-raster-calculations-in-r-rendered-create-hist-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Notice that the range of values for the output CHM is between 0 and 30 meters. Does this make sense for trees in Harvard Forest?</p>
+<figure><img src="../fig/04-raster-calculations-in-r-rendered-create-hist-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Notice that the range of values for the output CHM is between 0 and
+30 meters. Does this make sense for trees in Harvard Forest?</p>
 <div id="challenge2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -621,12 +655,19 @@ AREA_OR_POINT=Area </code></pre>
 <h3 class="callout-title">Challenge: Explore CHM Raster Values<a class="anchor" aria-label="anchor" href="#challenge2"></a>
 </h3>
 <div class="callout-content">
-<p>It’s often a good idea to explore the range of values in a raster dataset just like we might explore a dataset that we collected in the field.</p>
-<ol style="list-style-type: decimal"><li>What is the min and maximum value for the Harvard Forest Canopy Height Model (<code>CHM_HARV</code>) that we just created?</li>
-<li>What are two ways you can check this range of data for <code>CHM_HARV</code>?</li>
+<p>It’s often a good idea to explore the range of values in a raster
+dataset just like we might explore a dataset that we collected in the
+field.</p>
+<ol style="list-style-type: decimal"><li>What is the min and maximum value for the Harvard Forest Canopy
+Height Model (<code>CHM_HARV</code>) that we just created?</li>
+<li>What are two ways you can check this range of data for
+<code>CHM_HARV</code>?</li>
 <li>What is the distribution of all the pixel values in the CHM?</li>
-<li>Plot a histogram with 6 bins instead of the default and change the color of the histogram.</li>
-<li>Plot the <code>CHM_HARV</code> raster using breaks that make sense for the data. Include an appropriate color palette for the data, plot title and no axes ticks / labels.</li>
+<li>Plot a histogram with 6 bins instead of the default and change the
+color of the histogram.</li>
+<li>Plot the <code>CHM_HARV</code> raster using breaks that make sense
+for the data. Include an appropriate color palette for the data, plot
+title and no axes ticks / labels.</li>
 </ol></div>
 </div>
 </div>
@@ -637,9 +678,10 @@ AREA_OR_POINT=Area </code></pre>
   Answers
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<ol style="list-style-type: decimal"><li>There are missing values in our data, so we need to specify <code>na.rm = TRUE</code>.</li>
+<ol style="list-style-type: decimal"><li>There are missing values in our data, so we need to specify
+<code>na.rm = TRUE</code>.</li>
 </ol><div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -719,14 +761,19 @@ AREA_OR_POINT=Area </code></pre>
 </div>
 </section><section id="efficient-raster-calculations-overlay-function"><h2 class="section-heading">Efficient Raster Calculations: Overlay Function<a class="anchor" aria-label="anchor" href="#efficient-raster-calculations-overlay-function"></a>
 </h2>
-<hr class="half-width"><p>Raster math, like we just did, is an appropriate approach to raster calculations if:</p>
+<hr class="half-width"><p>Raster math, like we just did, is an appropriate approach to raster
+calculations if:</p>
 <ol style="list-style-type: decimal"><li>The rasters we are using are small in size.</li>
 <li>The calculations we are performing are simple.</li>
-</ol><p>However, raster math is a less efficient approach as computation becomes more complex or as file sizes become large. The <code>overlay()</code> function is more efficient when:</p>
+</ol><p>However, raster math is a less efficient approach as computation
+becomes more complex or as file sizes become large. The
+<code>overlay()</code> function is more efficient when:</p>
 <ol style="list-style-type: decimal"><li>The rasters we are using are larger in size.</li>
 <li>The rasters are stored as individual files.</li>
 <li>The computations performed are complex.</li>
-</ol><p>The <code>overlay()</code> function takes two or more rasters and applies a function to them using efficient processing methods. The syntax is</p>
+</ol><p>The <code>overlay()</code> function takes two or more rasters and
+applies a function to them using efficient processing methods. The
+syntax is</p>
 <p><code>outputRaster &lt;- overlay(raster1, raster2, fun=functionName)</code></p>
 <div id="callout2" class="callout callout">
 <div class="callout-square">
@@ -736,11 +783,15 @@ AREA_OR_POINT=Area </code></pre>
 <h3 class="callout-title">Data Tip<a class="anchor" aria-label="anchor" href="#callout2"></a>
 </h3>
 <div class="callout-content">
-<p>If the rasters are stacked and stored as <code>RasterStack</code> or <code>RasterBrick</code> objects in R, then we should use <code>calc()</code>. <code>overlay()</code> will not work on stacked rasters.</p>
+<p>If the rasters are stacked and stored as <code>RasterStack</code> or
+<code>RasterBrick</code> objects in R, then we should use
+<code>calc()</code>. <code>overlay()</code> will not work on stacked
+rasters.</p>
 </div>
 </div>
 </div>
-<p>Let’s perform the same subtraction calculation that we calculated above using raster math, using the <code>overlay()</code> function.</p>
+<p>Let’s perform the same subtraction calculation that we calculated
+above using raster math, using the <code>overlay()</code> function.</p>
 <div id="callout3" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -749,7 +800,11 @@ AREA_OR_POINT=Area </code></pre>
 <h3 class="callout-title">Data Tip<a class="anchor" aria-label="anchor" href="#callout3"></a>
 </h3>
 <div class="callout-content">
-<p>A custom function consists of a defined set of commands performed on a input object. Custom functions are particularly useful for tasks that need to be repeated over and over in the code. A simplified syntax for writing a custom function in R is: <code>function_name &lt;- function(variable1, variable2) { WhatYouWantDone, WhatToReturn}</code></p>
+<p>A custom function consists of a defined set of commands performed on
+a input object. Custom functions are particularly useful for tasks that
+need to be repeated over and over in the code. A simplified syntax for
+writing a custom function in R is:
+<code>function_name &lt;- function(variable1, variable2) { WhatYouWantDone, WhatToReturn}</code></p>
 </div>
 </div>
 </div>
@@ -761,7 +816,8 @@ AREA_OR_POINT=Area </code></pre>
 <span>                       <span class="va">DTM_HARV</span>,</span>
 <span>                       fun <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">r1</span>, <span class="va">r2</span><span class="op">)</span> <span class="op">{</span> <span class="kw">return</span><span class="op">(</span> <span class="va">r1</span> <span class="op">-</span> <span class="va">r2</span><span class="op">)</span> <span class="op">}</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Next we need to convert our new object to a data frame for plotting with <code>ggplot</code>.</p>
+<p>Next we need to convert our new object to a data frame for plotting
+with <code>ggplot</code>.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -779,12 +835,20 @@ AREA_OR_POINT=Area </code></pre>
 <span>   <span class="fu">scale_fill_gradientn</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Canopy Height"</span>, colors <span class="op">=</span> <span class="fu">terrain.colors</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>   <span class="fu">coord_quickmap</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/04-raster-calculations-in-r-rendered-harv-chm-overlay-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>How do the plots of the CHM created with manual raster math and the <code>overlay()</code> function compare?</p>
+<figure><img src="../fig/04-raster-calculations-in-r-rendered-harv-chm-overlay-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>How do the plots of the CHM created with manual raster math and the
+<code>overlay()</code> function compare?</p>
 </section><section id="export-a-geotiff"><h2 class="section-heading">Export a GeoTIFF<a class="anchor" aria-label="anchor" href="#export-a-geotiff"></a>
 </h2>
-<hr class="half-width"><p>Now that we’ve created a new raster, let’s export the data as a GeoTIFF file using the <code>writeRaster()</code> function.</p>
-<p>When we write this raster object to a GeoTIFF file we’ll name it <code>CHM_HARV.tiff</code>. This name allows us to quickly remember both what the data contains (CHM data) and for where (HARVard Forest). The <code>writeRaster()</code> function by default writes the output file to your working directory unless you specify a full file path.</p>
-<p>We will specify the output format (“GTiff”), the no data value (<code>NAflag = -9999</code>. We will also tell R to overwrite any data that is already in a file of the same name.</p>
+<hr class="half-width"><p>Now that we’ve created a new raster, let’s export the data as a
+GeoTIFF file using the <code>writeRaster()</code> function.</p>
+<p>When we write this raster object to a GeoTIFF file we’ll name it
+<code>CHM_HARV.tiff</code>. This name allows us to quickly remember both
+what the data contains (CHM data) and for where (HARVard Forest). The
+<code>writeRaster()</code> function by default writes the output file to
+your working directory unless you specify a full file path.</p>
+<p>We will specify the output format (“GTiff”), the no data value
+(<code>NAflag = -9999</code>. We will also tell R to overwrite any data
+that is already in a file of the same name.</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -798,26 +862,45 @@ AREA_OR_POINT=Area </code></pre>
 <h3 id="writeraster-options">writeRaster() Options<a class="anchor" aria-label="anchor" href="#writeraster-options"></a></h3>
 <p>The function arguments that we used above include:</p>
 <ul><li>
-<strong>format:</strong> specify that the format will be <code>GTiff</code> or GeoTIFF.</li>
+<strong>format:</strong> specify that the format will be
+<code>GTiff</code> or GeoTIFF.</li>
 <li>
-<strong>overwrite:</strong> If TRUE, R will overwrite any existing file with the same name in the specified directory. USE THIS SETTING WITH CAUTION!</li>
+<strong>overwrite:</strong> If TRUE, R will overwrite any existing
+file with the same name in the specified directory. USE THIS SETTING
+WITH CAUTION!</li>
 <li>
-<strong>NAflag:</strong> set the GeoTIFF tag for <code>NoDataValue</code> to -9999, the National Ecological Observatory Network’s (NEON) standard <code>NoDataValue</code>.</li>
+<strong>NAflag:</strong> set the GeoTIFF tag for
+<code>NoDataValue</code> to -9999, the National Ecological Observatory
+Network’s (NEON) standard <code>NoDataValue</code>.</li>
 </ul><div id="challenge3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-explore-the-neon-san-joaquin-experimental-range-field-site" class="callout-inner">
-<h3 class="callout-title">Challenge: Explore the NEON San Joaquin Experimental Range Field Site<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge: Explore the NEON San Joaquin
+Experimental Range Field Site<a class="anchor" aria-label="anchor" href="#challenge3"></a>
 </h3>
 <div class="callout-content">
-<p>Data are often more interesting and powerful when we compare them across various locations. Let’s compare some data collected over Harvard Forest to data collected in Southern California. The <a href="https://www.neonscience.org/field-sites/field-sites-map/SJER" class="external-link">NEON San Joaquin Experimental Range (SJER) field site</a> located in Southern California has a very different ecosystem and climate than the <a href="https://www.neonscience.org/field-sites/field-sites-map/HARV" class="external-link">NEON Harvard Forest Field Site</a> in Massachusetts.</p>
-<p>Import the SJER DSM and DTM raster files and create a Canopy Height Model. Then compare the two sites. Be sure to name your R objects and outputs carefully, as follows: objectType_SJER (e.g. <code>DSM_SJER</code>). This will help you keep track of data from different sites!</p>
-<ol start="0" style="list-style-type: decimal"><li>You should have the DSM and DTM data for the SJER site already loaded from the <a href="02-raster-plot.html">Plot Raster Data in R</a> episode.) Don’t forget to check the CRSs and units of the data.</li>
-<li>Create a CHM from the two raster layers and check to make sure the data are what you expect.</li>
+<p>Data are often more interesting and powerful when we compare them
+across various locations. Let’s compare some data collected over Harvard
+Forest to data collected in Southern California. The <a href="https://www.neonscience.org/field-sites/field-sites-map/SJER" class="external-link">NEON
+San Joaquin Experimental Range (SJER) field site</a> located in Southern
+California has a very different ecosystem and climate than the <a href="https://www.neonscience.org/field-sites/field-sites-map/HARV" class="external-link">NEON
+Harvard Forest Field Site</a> in Massachusetts.</p>
+<p>Import the SJER DSM and DTM raster files and create a Canopy Height
+Model. Then compare the two sites. Be sure to name your R objects and
+outputs carefully, as follows: objectType_SJER
+(e.g. <code>DSM_SJER</code>). This will help you keep track of data from
+different sites!</p>
+<ol start="0" style="list-style-type: decimal"><li>You should have the DSM and DTM data for the SJER site already
+loaded from the <a href="02-raster-plot.html">Plot Raster Data in R</a>
+episode.) Don’t forget to check the CRSs and units of the data.</li>
+<li>Create a CHM from the two raster layers and check to make sure the
+data are what you expect.</li>
 <li>Plot the CHM from SJER.</li>
 <li>Export the SJER CHM as a GeoTIFF.</li>
-<li>Compare the vegetation structure of the Harvard Forest and San Joaquin Experimental Range.</li>
+<li>Compare the vegetation structure of the Harvard Forest and San
+Joaquin Experimental Range.</li>
 </ol></div>
 </div>
 </div>
@@ -828,9 +911,10 @@ AREA_OR_POINT=Area </code></pre>
   Answers
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<ol style="list-style-type: decimal"><li>Use the <code>overlay()</code> function to subtract the two rasters &amp; create the CHM.</li>
+<ol style="list-style-type: decimal"><li>Use the <code>overlay()</code> function to subtract the two rasters
+&amp; create the CHM.</li>
 </ol><div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -846,7 +930,8 @@ AREA_OR_POINT=Area </code></pre>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">CHM_ov_SJER_df</span> <span class="op">&lt;-</span> <span class="fu">as.data.frame</span><span class="op">(</span><span class="va">CHM_ov_SJER</span>, xy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Create a histogram to check that the data distribution makes sense:</p>
+<p>Create a histogram to check that the data distribution makes
+sense:</p>
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -883,7 +968,9 @@ AREA_OR_POINT=Area </code></pre>
 <span>            overwrite <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>            NAflag <span class="op">=</span> <span class="op">-</span><span class="fl">9999</span><span class="op">)</span></span></code></pre>
 </div>
-<ol start="4" style="list-style-type: decimal"><li>Compare the SJER and HARV CHMs. Tree heights are much shorter in SJER. You can confirm this by looking at the histograms of the two CHMs.</li>
+<ol start="4" style="list-style-type: decimal"><li>Compare the SJER and HARV CHMs. Tree heights are much shorter in
+SJER. You can confirm this by looking at the histograms of the two
+CHMs.</li>
 </ol><div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -926,8 +1013,10 @@ AREA_OR_POINT=Area </code></pre>
 </h3>
 <div class="callout-content">
 <ul><li>Rasters can be computed on using mathematical functions.</li>
-<li>The <code>overlay()</code> function provides an efficient way to do raster math.</li>
-<li>The <code>writeRaster()</code> function can be used to write raster data to a file.</li>
+<li>The <code>overlay()</code> function provides an efficient way to do
+raster math.</li>
+<li>The <code>writeRaster()</code> function can be used to write raster
+data to a file.</li>
 </ul></div>
 </div>
 </div>

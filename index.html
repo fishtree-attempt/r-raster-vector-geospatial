@@ -333,12 +333,21 @@
       
 
 <blockquote>
-<p><strong>ATTENTION</strong> This is an experimental test of <a href="https://carpentries.github.io/workbench" class="external-link">The Carpentries Workbench</a> lesson infrastructure. It was automatically converted from the source lesson via <a href="https://github.com/carpentries/lesson-transition/" class="external-link">the lesson transition script</a>.</p>
+<p><strong>ATTENTION</strong> This is an experimental test of <a href="https://carpentries.github.io/workbench" class="external-link">The Carpentries
+Workbench</a> lesson infrastructure. It was automatically converted from
+the source lesson via <a href="https://github.com/carpentries/lesson-transition/" class="external-link">the lesson
+transition script</a>.</p>
 <p>If anything seems off, please contact Zhian Kamvar <a href="mailto:zkamvar@carpentries.org">zkamvar@carpentries.org</a></p>
 </blockquote>
-<p><strong>Lesson Authors:</strong> Leah A. Wasser, Megan A. Jones, Zack Brym, Kristina Riemer, Jason Williams, Jeff Hollister, Mike Smorul, Jemma Stachelek</p>
-<p><strong>Lesson Maintainers:</strong> {{ page.maintainers | join: ‘,’ }}</p>
-<p>The episodes in this lesson cover how to open, work with, and plot vector and raster-format spatial data in R. Additional topics include working with spatial metadata (extent and coordinate reference systems), reprojecting spatial data, and working with raster time series data.</p>
+<p><strong>Lesson Authors:</strong> Leah A. Wasser, Megan A. Jones, Zack
+Brym, Kristina Riemer, Jason Williams, Jeff Hollister, Mike Smorul,
+Jemma Stachelek</p>
+<p><strong>Lesson Maintainers:</strong> {{ page.maintainers | join: ‘,’
+}}</p>
+<p>The episodes in this lesson cover how to open, work with, and plot
+vector and raster-format spatial data in R. Additional topics include
+working with spatial metadata (extent and coordinate reference systems),
+reprojecting spatial data, and working with raster time series data.</p>
 <div id="prereq1" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
@@ -347,29 +356,48 @@
 <h3 class="callout-title">Prerequisites<a class="anchor" aria-label="anchor" href="#prereq1"></a>
 </h3>
 <div class="callout-content">
-<p>Data Carpentry’s teaching is hands-on, so participants are encouraged to use their own computers to ensure the proper setup of tools for an efficient workflow. To most effectively use these materials, please make sure to download the data and install everything before working through this lesson.</p>
+<p>Data Carpentry’s teaching is hands-on, so participants are encouraged
+to use their own computers to ensure the proper setup of tools for an
+efficient workflow. To most effectively use these materials, please make
+sure to download the data and install everything before working through
+this lesson.</p>
 <div class="section level3">
 <h3 id="r-skill-level">R Skill Level<a class="anchor" aria-label="anchor" href="#r-skill-level"></a></h3>
-<p>This lesson assumes you have some knowledge of <code>R</code>. If you’ve never used <code>R</code> before, or need a refresher, start with our <a href="http://www.datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to R for Geospatial Data</a> lesson.</p>
+<p>This lesson assumes you have some knowledge of <code>R</code>. If
+you’ve never used <code>R</code> before, or need a refresher, start with
+our <a href="http://www.datacarpentry.org/r-intro-geospatial/" class="external-link">Introduction to
+R for Geospatial Data</a> lesson.</p>
 </div>
 <div class="section level3">
 <h3 id="geospatial-skill-level">Geospatial Skill Level<a class="anchor" aria-label="anchor" href="#geospatial-skill-level"></a></h3>
-<p>This lesson assumes you have some knowledge of geospatial data types and common file formats. If you have never worked with geospatial data before, or need a refresher, start with our <a href="http://www.datacarpentry.org/organization-geospatial/" class="external-link">Introduction to Geospatial Concepts</a> lesson.</p>
+<p>This lesson assumes you have some knowledge of geospatial data types
+and common file formats. If you have never worked with geospatial data
+before, or need a refresher, start with our <a href="http://www.datacarpentry.org/organization-geospatial/" class="external-link">Introduction
+to Geospatial Concepts</a> lesson.</p>
 </div>
 <div class="section level3">
 <h3 id="install-software-and-download-data">Install Software and Download Data<a class="anchor" aria-label="anchor" href="#install-software-and-download-data"></a></h3>
-<p>For installation instructions and to download the data used in this lesson, see the <a href="http://www.datacarpentry.org/geospatial-workshop/setup.html" class="external-link">Geospatial Workshop Overview</a>.</p>
+<p>For installation instructions and to download the data used in this
+lesson, see the <a href="http://www.datacarpentry.org/geospatial-workshop/setup.html" class="external-link">Geospatial
+Workshop Overview</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="setup-rstudio-project">Setup RStudio Project<a class="anchor" aria-label="anchor" href="#setup-rstudio-project"></a></h3>
-<p>Make sure you have set up a RStudio project for this lesson, as described in the <a href="%7B%7B%20site.baseurl%20%7D%7D/setup.html" target="_blank">setup instructions</a> and that your working directory is correctly set.</p>
+<p>Make sure you have set up a RStudio project for this lesson, as
+described in the
+<a href="%7B%7B%20site.baseurl%20%7D%7D/setup.html" target="_blank">setup
+instructions</a> and that your working directory is correctly set.</p>
 </div>
 </div>
 </div>
 </div>
 
 
-      <section id="setup"><p>This lesson is designed to be taught in conjunction with other lessons in the <a href="http://www.datacarpentry.org/geospatial-workshop/" class="external-link">Data Carpentry Geospatial workshop</a>. For information about required software, and to access the datasets used in this lesson, see the <a href="https://datacarpentry.org/geospatial-workshop/setup.html" class="external-link">setup instructions</a> on the workshop homepage.</p>
+      <section id="setup"><p>This lesson is designed to be taught in conjunction with other
+lessons in the <a href="http://www.datacarpentry.org/geospatial-workshop/" class="external-link">Data Carpentry
+Geospatial workshop</a>. For information about required software, and to
+access the datasets used in this lesson, see the <a href="https://datacarpentry.org/geospatial-workshop/setup.html" class="external-link">setup
+instructions</a> on the workshop homepage.</p>
 
       </section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="01-raster-structure.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
