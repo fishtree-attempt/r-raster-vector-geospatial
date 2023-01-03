@@ -6,6 +6,17 @@ source: Rmd
 ---
 
 
+```{.warning}
+Warning in
+download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
+cannot open URL
+'https://www.naturalearthdata.com/http/www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip':
+HTTP status was '404 Not Found'
+```
+
+```{.error}
+Error in download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", : cannot open URL 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip'
+```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -599,6 +610,11 @@ ggplot() +
   ggtitle("NEON Harvard Forest Field Site", 
           subtitle = "Roads & Trails - Modified Legend") +
   coord_sf()
+```
+
+```{.warning}
+Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
+ℹ Please use the `linewidth` argument instead.
 ```
 
 <div class="figure" style="text-align: center">

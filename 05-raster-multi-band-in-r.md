@@ -6,6 +6,17 @@ source: Rmd
 ---
 
 
+```{.warning}
+Warning in
+download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
+cannot open URL
+'https://www.naturalearthdata.com/http/www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip':
+HTTP status was '404 Not Found'
+```
+
+```{.error}
+Error in download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", : cannot open URL 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip'
+```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -428,6 +439,18 @@ RasterStack objects and using the
 GDALinfo("data/NEON-DS-Airborne-Remote-Sensing/HARV/RGB_Imagery/HARV_Ortho_wNA.tif")
 ```
 
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
 ```{.output}
 rows        2317 
 columns     3073 
@@ -486,6 +509,18 @@ plotRGB(HARV_NA,
 
 ```r
 GDALinfo("data/NEON-DS-Airborne-Remote-Sensing/HARV/RGB_Imagery/HARV_RGB_Ortho.tif")
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
 ```
 
 ```{.output}
@@ -561,7 +596,7 @@ object.size(RGB_stack_HARV)
 ```
 
 ```{.output}
-52808 bytes
+51688 bytes
 ```
 
 Now we will create a RasterBrick object from our RasterStack data and view its size:
@@ -574,7 +609,7 @@ object.size(RGB_brick_HARV)
 ```
 
 ```{.output}
-170898912 bytes
+170898632 bytes
 ```
 
 Notice that in the RasterBrick, all of the bands are stored within the actual

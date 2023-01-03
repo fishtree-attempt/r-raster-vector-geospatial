@@ -6,6 +6,17 @@ source: Rmd
 ---
 
 
+```{.warning}
+Warning in
+download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
+cannot open URL
+'https://www.naturalearthdata.com/http/www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip':
+HTTP status was '404 Not Found'
+```
+
+```{.error}
+Error in download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", : cannot open URL 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip'
+```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -87,6 +98,18 @@ and resolutions? Do they both have defined minimum and maximum values?
 GDALinfo("data/NEON-DS-Airborne-Remote-Sensing/HARV/DTM/HARV_dtmCrop.tif")
 ```
 
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
 ```{.output}
 rows        1367 
 columns     1697 
@@ -113,6 +136,18 @@ AREA_OR_POINT=Area
 
 ```r
 GDALinfo("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
 ```
 
 ```{.output}
@@ -225,7 +260,7 @@ ggplot(CHM_HARV_df) +
 ```
 
 ```{.warning}
-Warning: Removed 1 rows containing non-finite values (stat_bin).
+Warning: Removed 1 rows containing non-finite values (`stat_bin()`).
 ```
 
 <img src="fig/04-raster-calculations-in-r-rendered-create-hist-1.png" style="display: block; margin: auto;" />
@@ -287,7 +322,7 @@ ggplot(CHM_HARV_df) +
 ```
 
 ```{.warning}
-Warning: Removed 1 rows containing non-finite values (stat_bin).
+Warning: Removed 1 rows containing non-finite values (`stat_bin()`).
 ```
 
 <img src="fig/04-raster-calculations-in-r-rendered-chm-harv-hist-1.png" style="display: block; margin: auto;" />
@@ -301,7 +336,7 @@ ggplot(CHM_HARV_df) +
 ```
 
 ```{.warning}
-Warning: Removed 1 rows containing non-finite values (stat_bin).
+Warning: Removed 1 rows containing non-finite values (`stat_bin()`).
 ```
 
 <img src="fig/04-raster-calculations-in-r-rendered-chm-harv-hist-green-1.png" style="display: block; margin: auto;" />
@@ -543,7 +578,7 @@ ggplot(CHM_HARV_df) +
 ```
 
 ```{.warning}
-Warning: Removed 1 rows containing non-finite values (stat_bin).
+Warning: Removed 1 rows containing non-finite values (`stat_bin()`).
 ```
 
 <img src="fig/04-raster-calculations-in-r-rendered-compare-chm-harv-sjer-1.png" style="display: block; margin: auto;" />

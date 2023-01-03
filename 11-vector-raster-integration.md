@@ -6,6 +6,17 @@ source: Rmd
 ---
 
 
+```{.warning}
+Warning in
+download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
+cannot open URL
+'https://www.naturalearthdata.com/http/www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip':
+HTTP status was '404 Not Found'
+```
+
+```{.error}
+Error in download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", : cannot open URL 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip'
+```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -475,7 +486,7 @@ ggplot(data = mean_tree_height_plots_HARV, aes(ID, HARV_chmCrop)) +
 ```
 
 ```{.warning}
-Warning: Removed 1 rows containing missing values (position_stack).
+Warning: Removed 1 rows containing missing values (`position_stack()`).
 ```
 
 <img src="fig/11-vector-raster-integration-rendered-hist-tree-height-veg-plot-1.png" style="display: block; margin: auto;" />

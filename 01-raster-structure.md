@@ -7,11 +7,11 @@ source: Rmd
 
 
 ```{.warning}
-Warning in download.file("http://www.naturalearthdata.com/http//
-www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
-cannot open URL 'https://www.naturalearthdata.com/http/www.naturalearthdata.com/
-download/110m/physical/ne_110m_graticules_all.zip': HTTP status was '404 Not
-Found'
+Warning in
+download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
+cannot open URL
+'https://www.naturalearthdata.com/http/www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip':
+HTTP status was '404 Not Found'
 ```
 
 ```{.error}
@@ -100,6 +100,18 @@ your data.
 GDALinfo("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 ```
 
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
 ```{.output}
 rows        1367 
 columns     1697 
@@ -131,6 +143,18 @@ If you wish to store this information in R, you can do the following:
 HARV_dsmCrop_info <- capture.output(
   GDALinfo("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
 )
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
 ```
 
 Each line of text that was printed to the console is now stored as an element of
@@ -322,14 +346,15 @@ Coordinate Reference System:
 Deprecated Proj.4 representation:
  +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs 
 WKT2 2019 representation:
-PROJCRS["WGS 84 / UTM zone 18N",
-    BASEGEOGCRS["WGS 84",
+PROJCRS["unknown",
+    BASEGEOGCRS["unknown",
         DATUM["World Geodetic System 1984",
             ELLIPSOID["WGS 84",6378137,298.257223563,
-                LENGTHUNIT["metre",1]]],
+                LENGTHUNIT["metre",1]],
+            ID["EPSG",6326]],
         PRIMEM["Greenwich",0,
-            ANGLEUNIT["degree",0.0174532925199433]],
-        ID["EPSG",4326]],
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8901]]],
     CONVERSION["UTM zone 18N",
         METHOD["Transverse Mercator",
             ID["EPSG",9807]],
@@ -347,19 +372,17 @@ PROJCRS["WGS 84 / UTM zone 18N",
             ID["EPSG",8806]],
         PARAMETER["False northing",0,
             LENGTHUNIT["metre",1],
-            ID["EPSG",8807]]],
+            ID["EPSG",8807]],
+        ID["EPSG",16018]],
     CS[Cartesian,2],
         AXIS["(E)",east,
             ORDER[1],
-            LENGTHUNIT["metre",1]],
+            LENGTHUNIT["metre",1,
+                ID["EPSG",9001]]],
         AXIS["(N)",north,
             ORDER[2],
-            LENGTHUNIT["metre",1]],
-    USAGE[
-        SCOPE["Engineering survey, topographic mapping."],
-        AREA["Between 78°W and 72°W, northern hemisphere between equator and 84°N, onshore and offshore. Bahamas. Canada - Nunavut; Ontario; Quebec. Colombia. Cuba. Ecuador. Greenland. Haiti. Jamica. Panama. Turks and Caicos Islands. United States (USA). Venezuela."],
-        BBOX[0,-78,84,-72]],
-    ID["EPSG",32618]] 
+            LENGTHUNIT["metre",1,
+                ID["EPSG",9001]]]] 
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -542,6 +565,18 @@ Use the output from the `GDALinfo()` function to find out what `NoDataValue` is 
 
 ```r
 GDALinfo("data/NEON-DS-Airborne-Remote-Sensing/HARV/DSM/HARV_dsmCrop.tif")
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
+```
+
+```{.warning}
+Warning: GDAL support is provided by the sf and terra packages among others
 ```
 
 ```{.output}

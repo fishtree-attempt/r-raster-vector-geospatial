@@ -6,6 +6,17 @@ source: Rmd
 ---
 
 
+```{.warning}
+Warning in
+download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
+cannot open URL
+'https://www.naturalearthdata.com/http/www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip':
+HTTP status was '404 Not Found'
+```
+
+```{.error}
+Error in download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", : cannot open URL 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip'
+```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
@@ -154,16 +165,16 @@ Coordinate Reference System:
 Deprecated Proj.4 representation:
  +proj=utm +zone=19 +ellps=WGS84 +units=m +no_defs 
 WKT2 2019 representation:
-PROJCRS["UTM Zone 19, Northern Hemisphere",
-    BASEGEOGCRS["WGS 84",
-        DATUM["unknown",
-            ELLIPSOID["WGS84",6378137,298.257223563,
-                LENGTHUNIT["metre",1,
-                    ID["EPSG",9001]]]],
+PROJCRS["unknown",
+    BASEGEOGCRS["unknown",
+        DATUM["Unknown based on WGS84 ellipsoid",
+            ELLIPSOID["WGS 84",6378137,298.257223563,
+                LENGTHUNIT["metre",1],
+                ID["EPSG",7030]]],
         PRIMEM["Greenwich",0,
-            ANGLEUNIT["degree",0.0174532925199433,
-                ID["EPSG",9122]]]],
-    CONVERSION["Transverse Mercator",
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8901]]],
+    CONVERSION["UTM zone 19N",
         METHOD["Transverse Mercator",
             ID["EPSG",9807]],
         PARAMETER["Latitude of natural origin",0,
@@ -180,13 +191,14 @@ PROJCRS["UTM Zone 19, Northern Hemisphere",
             ID["EPSG",8806]],
         PARAMETER["False northing",0,
             LENGTHUNIT["metre",1],
-            ID["EPSG",8807]]],
+            ID["EPSG",8807]],
+        ID["EPSG",16019]],
     CS[Cartesian,2],
-        AXIS["easting",east,
+        AXIS["(E)",east,
             ORDER[1],
             LENGTHUNIT["metre",1,
                 ID["EPSG",9001]]],
-        AXIS["northing",north,
+        AXIS["(N)",north,
             ORDER[2],
             LENGTHUNIT["metre",1,
                 ID["EPSG",9001]]]] 
@@ -469,8 +481,12 @@ Error in `$<-.data.frame`(`*tmp*`, rgb, value = character(0)): replacement has 0
 ```
 
 ```{.error}
-Error in `check_aesthetics()`:
-! Aesthetics must be either length 1 or the same as the data (453792): fill
+Error in `geom_raster()`:
+! Problem while setting up geom aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error in `check_aesthetics()`:
+! Aesthetics must be either length 1 or the same as the data (453792)
+✖ Fix the following mappings: `fill`
 ```
 
 ```{.error}
@@ -478,8 +494,12 @@ Error in `$<-.data.frame`(`*tmp*`, rgb, value = character(0)): replacement has 0
 ```
 
 ```{.error}
-Error in `check_aesthetics()`:
-! Aesthetics must be either length 1 or the same as the data (453792): fill
+Error in `geom_raster()`:
+! Problem while setting up geom aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error in `check_aesthetics()`:
+! Aesthetics must be either length 1 or the same as the data (453792)
+✖ Fix the following mappings: `fill`
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -549,8 +569,12 @@ ggplot() +
 ```
 
 ```{.error}
-Error in `check_aesthetics()`:
-! Aesthetics must be either length 1 or the same as the data (453792): fill
+Error in `geom_raster()`:
+! Problem while setting up geom aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error in `check_aesthetics()`:
+! Aesthetics must be either length 1 or the same as the data (453792)
+✖ Fix the following mappings: `fill`
 ```
 
 We then do the same steps for Julian day 293
@@ -575,8 +599,12 @@ ggplot() +
 ```
 
 ```{.error}
-Error in `check_aesthetics()`:
-! Aesthetics must be either length 1 or the same as the data (453792): fill
+Error in `geom_raster()`:
+! Problem while setting up geom aesthetics.
+ℹ Error occurred in the 1st layer.
+Caused by error in `check_aesthetics()`:
+! Aesthetics must be either length 1 or the same as the data (453792)
+✖ Fix the following mappings: `fill`
 ```
 
 This example highlights the importance of
