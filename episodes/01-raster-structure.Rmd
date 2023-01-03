@@ -20,6 +20,12 @@ knitr::opts_chunk$set(fig.height = 6)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::: instructor
+
+Make sure all attendees have installed pre-requisites for lesson to avoid confusion and delay later.
+
+:::::
+
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - What is a raster dataset?
