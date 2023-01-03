@@ -345,7 +345,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Handling Spatial Projection &amp; CRS</h1>
-        <p> Last updated on 2022-11-29 | 
+        <p> Last updated on 2023-01-03 | 
         
         
         <a href="https://carpentries.github.io/workbench/contributor/pre-beta.html?id=https://github.com/fishtree-attempt/r-raster-vector-geospatial/edit/main/episodes/09-vector-when-data-dont-line-up-crs.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
@@ -357,6 +357,20 @@
 
         
 
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning in
+download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", :
+cannot open URL
+'https://www.naturalearthdata.com/http/www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip':
+HTTP status was '404 Not Found'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in download.file("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip", : cannot open URL 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/physical/ne_110m_graticules_all.zip'</code></pre>
+</div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -407,7 +421,7 @@
 </section><section id="read-us-boundary-file"><h2 class="section-heading">Read US Boundary File<a class="anchor" aria-label="anchor" href="#read-us-boundary-file"></a>
 </h2>
 <hr class="half-width"><p>We will use the <code>st_read()</code> function to import the <code>/US-Boundary-Layers/US-State-Boundaries-Census-2014</code> layer into R. This layer contains the boundaries of all contiguous states in the U.S. Please note that these data have been modified and reprojected from the original data downloaded from the Census website to support the learning goals of this episode.</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -427,7 +441,7 @@ z_range:       zmin: 0 zmax: 0
 Geodetic CRS:  WGS 84</code></pre>
 </div>
 <p>Next, let’s plot the U.S. states data:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -439,7 +453,7 @@ Geodetic CRS:  WGS 84</code></pre>
 <figure><img src="fig/09-vector-when-data-dont-line-up-crs-rendered-find-coordinates-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="u.s.-boundary-layer"><h2 class="section-heading">U.S. Boundary Layer<a class="anchor" aria-label="anchor" href="#u.s.-boundary-layer"></a>
 </h2>
 <hr class="half-width"><p>We can add a boundary layer of the United States to our map - to make it look nicer. We will import <code>NEON-DS-Site-Layout-Files/US-Boundary-Layers/US-Boundary-Dissolved-States</code>.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -459,7 +473,7 @@ z_range:       zmin: 0 zmax: 0
 Geodetic CRS:  WGS 84</code></pre>
 </div>
 <p>If we specify a thicker line width using <code>size = 2</code> for the border layer, it will make our map pop! We will also manually set the colors of the state boundaries and country boundaries.</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -470,7 +484,7 @@ Geodetic CRS:  WGS 84</code></pre>
 <span>  <span class="fu">coord_sf</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/09-vector-when-data-dont-line-up-crs-rendered-us-boundaries-thickness-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Next, let’s add the location of a flux tower where our study area is. As we are adding these layers, take note of the CRS of each object. First let’s look at the CRS of our tower location object:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -531,7 +545,7 @@ PROJCRS["WGS 84 / UTM zone 18N",
 <strong>ellps=WGS84:</strong> the ellipsoid (how the earth’s roundness is calculated) for the data is WGS84</li>
 </ul><p>Note that the <code>zone</code> is unique to the UTM projection. Not all CRSs will have a zone.</p>
 <p>Let’s check the CRS of our state and country boundary objects:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -558,7 +572,7 @@ GEOGCRS["WGS 84",
             ANGLEUNIT["degree",0.0174532925199433]],
     ID["EPSG",4326]]</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -610,7 +624,7 @@ GEOGCRS["WGS 84",
 </h2>
 <hr class="half-width"><p>Next, let’s view the extent or spatial coverage for the <code>point_HARV</code> spatial object compared to the <code>state_boundary_US</code> object.</p>
 <p>First we’ll look at the extent for our study site:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -623,7 +637,7 @@ GEOGCRS["WGS 84",
  732183.2 4713265.0  732183.2 4713265.0 </code></pre>
 </div>
 <p>And then the extent for the state boundary data.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -654,7 +668,7 @@ GEOGCRS["WGS 84",
 </section><section id="reproject-vector-data-or-no"><h2 class="section-heading">Reproject Vector Data or No?<a class="anchor" aria-label="anchor" href="#reproject-vector-data-or-no"></a>
 </h2>
 <hr class="half-width"><p>We saw in <a href="03-raster-reproject-in-r.html">an earlier episode</a> that when working with raster data in different CRSs, we needed to convert all objects to the same CRS. We can do the same thing with our vector data - however, we don’t need to! When using the <code>ggplot2</code> package, <code>ggplot</code> automatically converts all objects to the same CRS before plotting. This means we can plot our three data sets together without doing any conversion:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -690,7 +704,7 @@ GEOGCRS["WGS 84",
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -709,7 +723,7 @@ Bounding box:  xmin: -80.51989 ymin: 37.91685 xmax: -66.9499 ymax: 47.45716
 z_range:       zmin: 0 zmax: 0
 Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -794,7 +808,7 @@ Geodetic CRS:  WGS 84</code></pre>
   "url": "https://preview.carpentries.org/r-raster-vector-geospatial/09-vector-when-data-dont-line-up-crs.html",
   "identifier": "https://preview.carpentries.org/r-raster-vector-geospatial/09-vector-when-data-dont-line-up-crs.html",
   "dateCreated": "2023-01-03",
-  "dateModified": "2022-11-29",
+  "dateModified": "2023-01-03",
   "datePublished": "2023-01-03"
 }
 
